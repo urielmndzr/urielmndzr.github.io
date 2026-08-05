@@ -6,8 +6,8 @@
 const profileData = {
   name: "Uriel Méndez Romero",
   title: "Ingeniero en Sistemas Computacionales",
-  tagline: "Especialista en Desarrollo de Software, Soluciones Empresariales ERP & Análisis de Datos.",
-  about: "Ingeniero en Sistemas Computacionales graduado con mención honorífica. Apasionado por el desarrollo de software, el diseño de soluciones empresariales y el análisis de datos. Cuento con experiencia en la implementación y despliegue de aplicaciones para optimizar procesos de negocio con Python, Java, SQL, SAP HANA y Power BI. Mi enfoque combina la colaboración ágil (CI/CD) con la formación continua en inteligencia artificial, automatización y soluciones inteligentes.",
+  tagline: "Desarrollo de Software, Soluciones Empresariales & Análisis de Datos.",
+  about: "Ingeniero en Sistemas Computacionales. Apasionado por el desarrollo de software, el diseño de soluciones empresariales y el análisis de datos. Cuento con experiencia en la implementación y despliegue de aplicaciones para optimizar procesos de negocio con Python, Java, SQL, SAP HANA y Power BI. Mi enfoque combina la colaboración ágil (CI/CD) con la formación continua en inteligencia artificial, automatización y soluciones inteligentes.",
   location: "Veracruz, Ver. México",
   phone: "+52 229 290 7331",
   email: "urielmendezr05@gmail.com",
@@ -26,10 +26,9 @@ const profileData = {
   ],
 
   stats: [
-    { label: "Distinción Académica", value: "Mención Honorífica" },
     { label: "Experiencia ERP & IT", value: "Empresarial" },
-    { label: "Tecnologías & BI", value: "Multi-stack" },
-    { label: "Compromiso Técnico", value: "100%" }
+    { label: "Tecnologías & BI", value: "Multi-Stack" },
+    { label: "Distinción Académica", value: "Mención Honorífica <br>Cum Laude" }
   ]
 };
 
@@ -39,32 +38,32 @@ const trajectoryData = [
     period: "Diciembre 2025 – Julio 2026",
     role: "Software Developer",
     organization: "Ofix — Veracruz, México",
-    description: "Diseñé, desarrollé e implementé mejoras funcionales sobre el ERP corporativo (Odoo) utilizando Python y XML (Full-Stack). Administré consultas SQL en PostgreSQL para garantizar la integridad de los datos y colaboré en ciclos ágiles de CI/CD utilizando Git y Jira.",
-    skills: ["Python", "Odoo ERP", "PostgreSQL", "SQL", "Git", "Jira", "CI/CD", "XML"]
+    description: "Diseñé, desarrollé e implementé mejoras funcionales sobre el ERP corporativo (Odoo) utilizando Python, XML y JavaScript (Full-Stack), optimizando procesos en áreas clave como contabilidad, crédito, costos y logística. Colaboré con usuarios y áreas de negocio para analizar requerimientos y transformar necesidades operativas en soluciones de software escalables. Asimismo, estructuré consultas SQL y administré datos en PostgreSQL para respaldar aplicaciones empresariales, garantizar la integridad de la información y generar reportes operativos para la toma de decisiones. Finalmente, participé en ciclos de desarrollo ágiles con Git y Jira, impulsando procesos de integración y despliegue continuo (CI/CD) para acelerar la entrega de funcionalidades y asegurar la estabilidad del sistema.",
+    skills: ["Python", "Odoo ERP", "JavaScript", "PostgreSQL", "SQL", "Git / Jira", "CI/CD", "Full-Stack"]
   },
   {
     type: "work",
     period: "Febrero 2025 – Diciembre 2025",
     role: "Commercial IT - Trainee",
     organization: "TenarisTamsa — Veracruz, México",
-    description: "Desarrollé dashboards corporativos en Power BI para transformar datos comerciales en indicadores estratégicos. Diseñé y modelé vistas relacionales en SAP HANA Studio para integrar datos del ERP SAP y documenté modelos de datos para procesos de migración.",
-    skills: ["Power BI", "SAP HANA Studio", "SAP ERP", "Modelado de Datos", "ETL", "SQL"]
+    description: "Desarrollé dashboards corporativos en Power BI para transformar información clave del proceso comercial de la compañía en indicadores estratégicos que optimizaron el seguimiento y la toma de decisiones. Diseñé y modelé vistas relacionales en SAP HANA Studio para integrar y simplificar datos del ERP SAP, incrementando la disponibilidad de la información en reportes analíticos. Asimismo, analicé y documenté modelos de datos correspondientes a reportes críticos del área, facilitando procesos de migración, garantizando la consistencia de la información y respaldando el desarrollo de nuevas soluciones digitales.",
+    skills: ["Power BI", "SAP HANA Studio", "SAP ERP", "Modelado de Datos", "Análisis de Datos", "Soluciones Digitales"]
   },
   {
     type: "education",
     period: "2020 – 2025",
     role: "Ingeniería en Sistemas Computacionales",
     organization: "Instituto Tecnológico de Veracruz",
-    description: "Graduado con mención honorífica. Especialización en desarrollo de software, algoritmos, arquitectura de sistemas y bases de datos relacionales.",
-    skills: ["Desarrollo de Software", "Algoritmos", "Bases de Datos", "Mención Honorífica"]
+    description: "Graduado con mención honorífica. Formación enfocada en el ciclo completo de ingeniería de software (análisis, diseño y desarrollo), el modelado de bases de datos y construcción de consultas SQL optimizadas, así como en sólidos fundamentos de redes informáticas.",
+    skills: ["Ingeniería de Software", "Programación", "Bases de Datos & SQL", "Redes Informáticas", "Mención Honorífica"]
   },
   {
     type: "education",
     period: "2017 – 2020",
     role: "Profesional Técnico Bachiller en Informática",
     organization: "Colegio Nacional de Educación Profesional Técnica (CONALEP)",
-    description: "Formación técnica con bases sólidas en programación, redes, mantenimiento de sistemas y lógica computacional.",
-    skills: ["Informática", "Programación Base", "Redes"]
+    description: "Formación técnica con especialidad en Desarrollo de Sistemas, enfocada en la planeación de proyectos de software, así como en el análisis, diseño, elaboración y mantenimiento de sistemas de información.",
+    skills: ["Desarrollo de Sistemas", "Análisis & Diseño", "Planeación de Proyectos", "Sistemas de Información"]
   }
 ];
 
@@ -73,19 +72,19 @@ const projectsData = [
     id: 1,
     title: "Demostrador Automático de Teoremas (I+D)",
     category: "Investigación & Algoritmos",
-    description: "Aplicación para la validación automática de argumentos lógicos, implementando parsing personalizado, algoritmos de normalización y estructuras de datos avanzadas.",
+    description: "Marco computacional diseñado para automatizar la validación de argumentos lógicos mediante la transformación de lenguaje formal en demostraciones ejecutables por máquina. Incorpora un analizador léxico y sintáctico (parser) personalizado, estructuras de Árboles de Sintaxis Binaria (AST) para la aplicación recursiva de leyes lógicas, un motor de normalización a Forma Normal Conjuntiva (CNF) y demostración automática de teoremas (ATP) basada en el Principio de Resolución.",
     image: "assets/images/avatar.png",
-    technologies: ["Python", "Algoritmos", "Parsing", "Estructuras de Datos"],
+    technologies: ["Java", "JavaCC", "Lógica Formal", "Parsing"],
     demoUrl: "#",
-    repoUrl: "https://github.com/urielmndzr"
+    repoUrl: "https://github.com/urielmndzr/AutomatedTheoremProver"
   },
   {
     id: 2,
     title: "Daily Diary — Gestión Ganadera",
     category: "Software de Escritorio",
-    description: "Aplicación de escritorio desarrollada para la gestión ganadera, permitiendo llevar un registro sistemático del ganado y control de producción con acceso rápido a la información.",
+    description: "Aplicación de escritorio desarrollada en Java para la gestión ganadera integral. Permite la administración del ganado, el seguimiento de la producción de leche y la generación de reportes por periodos. Incluye módulos para el registro de venta del ganado, optimizando la organización operativa y centralizando la información del negocio.",
     image: "assets/images/avatar.png",
-    technologies: ["Java", "SQL Embebido", "Desktop App", "Gestión de Datos"],
+    technologies: ["Java", "SQL Embebido", "Gestión Ganadera", "Reportes & Analítica"],
     demoUrl: "#",
     repoUrl: "https://github.com/urielmndzr"
   },
@@ -93,9 +92,9 @@ const projectsData = [
     id: 3,
     title: "Second Chance — Software Analítico Académico",
     category: "Software de Escritorio / Analítica",
-    description: "Software de escritorio para análisis académico. Realiza extracción y limpieza de datos (ETL) desde Excel e integra una base de datos embebida para identificar patrones de bajo rendimiento escolar.",
+    description: "Aplicación de escritorio desarrollada en Java para la detección temprana de estudiantes con bajo rendimiento académico. Automatiza la extracción y procesamiento de datos (ETL) a partir de archivos Excel, generando reportes simplificados que permiten identificar factores críticos y respaldar la toma de decisiones de los docentes.",
     image: "assets/images/avatar.png",
-    technologies: ["Java", "SQL Embebido", "ETL", "Análisis de Datos", "Excel Data"],
+    technologies: ["Java", "ETL (Excel Data)", "SQL Embebido", "Analítica Académica"],
     demoUrl: "#",
     repoUrl: "https://github.com/urielmndzr"
   }
@@ -104,18 +103,18 @@ const projectsData = [
 const skillsData = {
   programming: [
     { name: "Python", level: 92 },
-    { name: "Java", level: 88 },
+    { name: "Java", level: 90 },
     { name: "SQL (PostgreSQL / SAP HANA)", level: 90 },
     { name: "C / C++", level: 80 },
-    { name: "XML & Full-Stack Odoo ERP", level: 85 }
+    { name: "XML & Full-Stack Odoo ERP", level: 80 }
   ],
   toolsAndPlatforms: [
     { name: "Power BI & Business Intelligence", level: 90 },
     { name: "SAP HANA Studio & ERP SAP", level: 85 },
-    { name: "Odoo ERP & PostgreSQL", level: 88 },
-    { name: "Git, GitHub & CI/CD", level: 88 },
-    { name: "Docker & REST APIs", level: 82 },
-    { name: "Linux & Herramientas I+D (Jira, UML)", level: 85 }
+    { name: "Odoo ERP & PostgreSQL", level: 85 },
+    { name: "Git, GitHub & CI/CD", level: 90 },
+    { name: "Docker & REST APIs", level: 80 },
+    { name: "Linux & Herramientas Colaborativas (Jira, UML)", level: 90 }
   ],
   softSkills: [
     "Adaptabilidad",
