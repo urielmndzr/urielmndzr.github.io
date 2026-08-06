@@ -79,22 +79,35 @@ function renderTrajectory() {
   const timelineContainer = document.getElementById('timeline-container');
   if (!timelineContainer || typeof trajectoryData === 'undefined') return;
 
-  timelineContainer.innerHTML = trajectoryData.map((item, index) => `
-    <div class="timeline-item reveal ${index % 2 === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content glass-card">
-        <div class="timeline-header">
-          <span class="timeline-period">${item.period}</span>
-        </div>
-        <h3 class="timeline-role">${item.role}</h3>
-        <div class="timeline-org">${item.organization}</div>
-        <p class="timeline-desc">${item.description}</p>
-        <div class="tag-list">
-          ${item.skills.map(s => `<span class="tag">${s}</span>`).join('')}
+  timelineContainer.innerHTML = trajectoryData.map((item, index) => {
+    let contentHtml = '';
+    if (item.points && Array.isArray(item.points)) {
+      contentHtml = `
+        <ul class="timeline-bullets">
+          ${item.points.map(pt => `<li>${pt}</li>`).join('')}
+        </ul>
+      `;
+    } else if (item.description) {
+      contentHtml = `<p class="timeline-desc">${item.description}</p>`;
+    }
+
+    return `
+      <div class="timeline-item reveal ${index % 2 === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content glass-card">
+          <div class="timeline-header">
+            <span class="timeline-period">${item.period}</span>
+          </div>
+          <h3 class="timeline-role">${item.role}</h3>
+          <div class="timeline-org">${item.organization}</div>
+          ${contentHtml}
+          <div class="tag-list">
+            ${item.skills.map(s => `<span class="tag">${s}</span>`).join('')}
+          </div>
         </div>
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 /* --- RENDERIZADO DE PROYECTOS --- */
