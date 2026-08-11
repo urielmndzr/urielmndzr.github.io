@@ -11,13 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initNavbarScroll();
   initMobileMenu();
-  initContactForm();
 });
 
 /* --- TEMA CLARO / OSCURO CON LOCALSTORAGE --- */
 function initTheme() {
   const themeToggleBtn = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('theme') || 'dark';
+  const savedTheme = localStorage.getItem('theme') || 'light';
   
   document.documentElement.setAttribute('data-theme', savedTheme);
 
@@ -79,22 +78,35 @@ function renderTrajectory() {
   const timelineContainer = document.getElementById('timeline-container');
   if (!timelineContainer || typeof trajectoryData === 'undefined') return;
 
-  timelineContainer.innerHTML = trajectoryData.map((item, index) => `
-    <div class="timeline-item reveal ${index % 2 === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content glass-card">
-        <div class="timeline-header">
-          <span class="timeline-period">${item.period}</span>
-        </div>
-        <h3 class="timeline-role">${item.role}</h3>
-        <div class="timeline-org">${item.organization}</div>
-        <p class="timeline-desc">${item.description}</p>
-        <div class="tag-list">
-          ${item.skills.map(s => `<span class="tag">${s}</span>`).join('')}
+  timelineContainer.innerHTML = trajectoryData.map((item, index) => {
+    let contentHtml = '';
+    if (item.points && Array.isArray(item.points)) {
+      contentHtml = `
+        <ul class="timeline-bullets">
+          ${item.points.map(pt => `<li>${pt}</li>`).join('')}
+        </ul>
+      `;
+    } else if (item.description) {
+      contentHtml = `<p class="timeline-desc">${item.description}</p>`;
+    }
+
+    return `
+      <div class="timeline-item reveal ${index % 2 === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content glass-card">
+          <div class="timeline-header">
+            <span class="timeline-period">${item.period}</span>
+          </div>
+          <h3 class="timeline-role">${item.role}</h3>
+          <div class="timeline-org">${item.organization}</div>
+          ${contentHtml}
+          <div class="tag-list">
+            ${item.skills.map(s => `<span class="tag">${s}</span>`).join('')}
+          </div>
         </div>
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 /* --- RENDERIZADO DE PROYECTOS --- */
@@ -127,7 +139,7 @@ function renderProjects() {
   `).join('');
 }
 
-/* --- RENDERIZADO DE HABILIDADES & IDIOMAS --- */
+/* --- RENDERIZADO DE HABILIDADES Y IDIOMAS --- */
 function renderSkills() {
   const programmingContainer = document.getElementById('programming-skills');
   const toolSkillsContainer = document.getElementById('tool-skills');
@@ -242,41 +254,6 @@ function initMobileMenu() {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
       });
-    });
-  }
-}
-
-/* --- FORMULARIO DE CONTACTO --- */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const formStatus = document.getElementById('form-status');
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.innerHTML;
-      
-      btn.disabled = true;
-      btn.innerHTML = 'Enviando...';
-
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.innerHTML = originalText;
-        
-        if (formStatus) {
-          formStatus.style.display = 'block';
-          formStatus.className = 'form-status success';
-          formStatus.textContent = '¡Gracias! Tu mensaje ha sido enviado correctamente.';
-        }
-        
-        form.reset();
-        
-        setTimeout(() => {
-          if (formStatus) formStatus.style.display = 'none';
-        }, 5000);
-      }, 1200);
     });
   }
 }

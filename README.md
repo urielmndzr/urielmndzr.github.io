@@ -1,4 +1,4 @@
-# Uriel Mendez - Sitio Web Profesional & Portafolio
+# Uriel Mendez - Sitio Web Profesional y Portafolio
 
 Este repositorio contiene la estructura completa y el código fuente de mi página web profesional, diseñada para ser publicada directamente en **GitHub Pages** en la dirección `https://urielmndzr.github.io`.
 
