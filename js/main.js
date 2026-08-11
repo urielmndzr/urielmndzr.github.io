@@ -11,13 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initNavbarScroll();
   initMobileMenu();
-  initContactForm();
 });
 
 /* --- TEMA CLARO / OSCURO CON LOCALSTORAGE --- */
 function initTheme() {
   const themeToggleBtn = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('theme') || 'dark';
+  const savedTheme = localStorage.getItem('theme') || 'light';
   
   document.documentElement.setAttribute('data-theme', savedTheme);
 
@@ -140,7 +139,7 @@ function renderProjects() {
   `).join('');
 }
 
-/* --- RENDERIZADO DE HABILIDADES & IDIOMAS --- */
+/* --- RENDERIZADO DE HABILIDADES Y IDIOMAS --- */
 function renderSkills() {
   const programmingContainer = document.getElementById('programming-skills');
   const toolSkillsContainer = document.getElementById('tool-skills');
@@ -255,41 +254,6 @@ function initMobileMenu() {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
       });
-    });
-  }
-}
-
-/* --- FORMULARIO DE CONTACTO --- */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const formStatus = document.getElementById('form-status');
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.innerHTML;
-      
-      btn.disabled = true;
-      btn.innerHTML = 'Enviando...';
-
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.innerHTML = originalText;
-        
-        if (formStatus) {
-          formStatus.style.display = 'block';
-          formStatus.className = 'form-status success';
-          formStatus.textContent = '¡Gracias! Tu mensaje ha sido enviado correctamente.';
-        }
-        
-        form.reset();
-        
-        setTimeout(() => {
-          if (formStatus) formStatus.style.display = 'none';
-        }, 5000);
-      }, 1200);
     });
   }
 }
