@@ -95,7 +95,7 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Daily Diary — Gestión Ganadera (2023)",
+    title: "Daily Diary (2023)",
     category: "Software de Escritorio",
     description: "Aplicación de escritorio desarrollada en Java para la gestión ganadera integral. Permite la administración del ganado, el seguimiento de la producción de leche y la generación de reportes por periodos. Incluye módulos para el registro de venta del ganado, optimizando la organización operativa y centralizando la información del negocio.",
     image: "assets/images/projects/daily-diary/logo.png",
@@ -108,7 +108,7 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "Second Chance — Software Analítico Académico (2019)",
+    title: "Second Chance (2019)",
     category: "Software de Escritorio / Analítica",
     description: "Aplicación de escritorio desarrollada en Java para la detección temprana de estudiantes con bajo rendimiento académico. Automatiza la extracción y procesamiento de datos (ETL) a partir de archivos Excel, generando reportes simplificados que permiten identificar factores críticos y respaldar la toma de decisiones de los docentes.",
     image: "assets/images/projects/second-chance/logo.png",
