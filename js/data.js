@@ -90,9 +90,12 @@ const projectsData = [
     id: 1,
     title: "Demostrador Automático de Teoremas (I+D)",
     category: "Investigación y Algoritmos",
-    description: "Marco computacional diseñado para automatizar la validación de argumentos lógicos mediante la transformación de lenguaje formal en demostraciones ejecutables por máquina. Incorpora un analizador léxico y sintáctico (parser) personalizado, estructuras de Árboles de Sintaxis Binaria (AST) para la aplicación recursiva de leyes lógicas, un motor de normalización a Forma Normal Conjuntiva (CNF) y demostración automática de teoremas (ATP) basada en el Principio de Resolución.",
-    image: "assets/images/avatar.png",
-    technologies: ["Java", "JavaCC", "Lógica Formal", "Parsing"],
+    description: "Marco computacional diseñado para automatizar la validación de argumentos en Lógica Proposicional mediante la transformación de lenguaje formal en demostraciones ejecutables por máquina. Incorpora un analizador léxico y sintáctico (parser) personalizado desarrollado con JavaCC, estructuras de Árboles de Sintaxis Binaria (AST) para la aplicación recursiva de leyes lógicas, un motor de normalización a Forma Normal Conjuntiva (CNF) y demostración automática de teoremas (ATP) basada en el Principio de Resolución.",
+    image: "assets/images/projects/theorem-prover/logo.png",
+    images: [
+      "assets/images/projects/theorem-prover/logo.png"
+    ],
+    technologies: ["Java", "JavaCC", "Lógica Proposicional", "Parsing", "Resolución ATP"],
     demoUrl: "#",
     repoUrl: "https://github.com/urielmndzr/AutomatedTheoremProver"
   },
@@ -101,7 +104,10 @@ const projectsData = [
     title: "Daily Diary — Gestión Ganadera",
     category: "Software de Escritorio",
     description: "Aplicación de escritorio desarrollada en Java para la gestión ganadera integral. Permite la administración del ganado, el seguimiento de la producción de leche y la generación de reportes por periodos. Incluye módulos para el registro de venta del ganado, optimizando la organización operativa y centralizando la información del negocio.",
-    image: "assets/images/avatar.png",
+    image: "assets/images/projects/daily-diary/logo.png",
+    images: [
+      "assets/images/projects/daily-diary/logo.png"
+    ],
     technologies: ["Java", "SQL Embebido", "Gestión Ganadera", "Reportes y Analítica"],
     demoUrl: "#",
     repoUrl: "https://github.com/urielmndzr"
@@ -111,7 +117,10 @@ const projectsData = [
     title: "Second Chance — Software Analítico Académico",
     category: "Software de Escritorio / Analítica",
     description: "Aplicación de escritorio desarrollada en Java para la detección temprana de estudiantes con bajo rendimiento académico. Automatiza la extracción y procesamiento de datos (ETL) a partir de archivos Excel, generando reportes simplificados que permiten identificar factores críticos y respaldar la toma de decisiones de los docentes.",
-    image: "assets/images/avatar.png",
+    image: "assets/images/projects/second-chance/logo.png",
+    images: [
+      "assets/images/projects/second-chance/logo.png"
+    ],
     technologies: ["Java", "ETL (Excel Data)", "SQL Embebido", "Analítica Académica"],
     demoUrl: "#",
     repoUrl: "https://github.com/urielmndzr"

@@ -437,19 +437,29 @@
 .project-img-wrapper {
   position: relative;
   width: 100%;
-  height: 170px;
+  height: 180px;
   overflow: hidden;
+  background: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-img-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 1.25rem;
+  box-sizing: border-box;
   transition: transform var(--transition-slow);
 }
 
 .project-card:hover .project-img-wrapper img {
-  transform: scale(1.06);
+  transform: scale(1.08);
+}
+
+[data-theme="dark"] .project-img-wrapper {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .project-category {

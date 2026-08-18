@@ -17,8 +17,11 @@ urielmndzr.github.io/
 │   ├── data.js             # Datos estructurados (Perfil, Trayectoria, Proyectos, Habilidades)
 │   └── main.js             # Lógica de renderizado dinámico, conmutador de tema y menú móvil
 ├── assets/
-│   ├── images/             # Imágenes (avatar.png y miniaturas de proyectos)
-│   └── icons/              # Favicon e iconos vectoriales
+│   ├── images/
+│   │   ├── profile/        # Foto de perfil (profile_picture.jpg)
+│   │   ├── favicon/        # Iconos de sitio y favicons
+│   │   └── projects/       # Imágenes organizadas por proyecto
+│   └── icons/              # Iconos auxiliares
 └── README.md               # Documentación y guía de despliegue
 ```
 
