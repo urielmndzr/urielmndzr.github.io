@@ -147,6 +147,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto 2.25rem auto;
 }
 
+.section-alt {
+  background: var(--bg-secondary);
+}
+
 /* Glassmorphism Card Utility */
 .glass-card {
   background: var(--bg-card);

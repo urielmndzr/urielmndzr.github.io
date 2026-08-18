@@ -62,15 +62,6 @@ function renderProfile() {
     contactEmail.href = profileData.socials.email;
   }
   if (contactLocation) contactLocation.textContent = profileData.location;
-
-  if (statsContainer && profileData.stats) {
-    statsContainer.innerHTML = profileData.stats.map(stat => `
-      <div class="stat-item">
-        <div class="stat-number gradient-text">${stat.value}</div>
-        <div class="stat-label">${stat.label}</div>
-      </div>
-    `).join('');
-  }
 }
 
 /* --- RENDERIZADO DE TRAYECTORIA --- */
@@ -142,29 +133,32 @@ function renderProjects() {
 /* --- RENDERIZADO DE HABILIDADES Y IDIOMAS --- */
 function renderSkills() {
   const programmingContainer = document.getElementById('programming-skills');
-  const toolSkillsContainer = document.getElementById('tool-skills');
+  const erpContainer = document.getElementById('erp-skills');
+  const biContainer = document.getElementById('bi-skills');
+  const devopsContainer = document.getElementById('devops-skills');
   const softSkillsContainer = document.getElementById('soft-skills');
   const languagesContainer = document.getElementById('languages-container');
 
   if (typeof skillsData === 'undefined') return;
 
-  const renderSkillList = (skills) => skills.map(skill => `
-    <div class="skill-item">
-      <div class="skill-info">
-        <span>${skill.name}</span>
-        <span>${skill.level}%</span>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-progress" data-level="${skill.level}"></div>
-      </div>
-    </div>
+  const renderChips = (skills) => skills.map(skill => `
+    <span class="skill-chip">
+      <span class="chip-dot"></span>
+      ${skill}
+    </span>
   `).join('');
 
   if (programmingContainer && skillsData.programming) {
-    programmingContainer.innerHTML = renderSkillList(skillsData.programming);
+    programmingContainer.innerHTML = renderChips(skillsData.programming);
   }
-  if (toolSkillsContainer && skillsData.toolsAndPlatforms) {
-    toolSkillsContainer.innerHTML = renderSkillList(skillsData.toolsAndPlatforms);
+  if (erpContainer && skillsData.databasesAndErp) {
+    erpContainer.innerHTML = renderChips(skillsData.databasesAndErp);
+  }
+  if (biContainer && skillsData.biAndAnalytics) {
+    biContainer.innerHTML = renderChips(skillsData.biAndAnalytics);
+  }
+  if (devopsContainer && skillsData.toolsAndDevops) {
+    devopsContainer.innerHTML = renderChips(skillsData.toolsAndDevops);
   }
 
   // Render soft skills badges
@@ -193,13 +187,6 @@ function initScrollAnimations() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
-
-        // Animar barras de habilidades si están en el elemento visible
-        const progressBars = entry.target.querySelectorAll('.skill-progress');
-        progressBars.forEach(bar => {
-          const level = bar.getAttribute('data-level');
-          bar.style.width = `${level}%`;
-        });
       }
     });
   }, { threshold: 0.15 });
