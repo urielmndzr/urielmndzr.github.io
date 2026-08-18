@@ -537,33 +537,42 @@
   gap: 0.6rem;
 }
 
-.skill-item {
-  margin-bottom: 1.1rem;
-}
-
-.skill-info {
+.skills-chips-wrapper {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-  font-weight: 600;
+  flex-wrap: wrap;
+  gap: 0.65rem;
 }
 
-.skill-bar {
-  width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.06);
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-full);
-  overflow: hidden;
-  position: relative;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+  cursor: default;
 }
 
-.skill-progress {
-  height: 100%;
+.skill-chip:hover {
+  border-color: var(--accent-primary);
+  background: var(--bg-glass);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -4px var(--accent-glow);
+}
+
+.chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--accent-gradient);
-  border-radius: var(--radius-full);
-  width: 0%;
-  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 /* --- CONTACT SECTION --- */
@@ -709,11 +718,19 @@
 .language-item {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.2);
+  padding: 1.1rem 1rem;
+  background: var(--bg-card);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   text-align: center;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+}
+
+.language-item:hover {
+  border-color: var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -4px var(--accent-glow);
 }
 
 .lang-name {
