@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentación Técnica | Demostrador Automático de Teoremas (ATP)</title>
+  <meta name="description"
+    content="Documentación técnica y arquitectura general del Demostrador Automático de Teoremas para Lógica Proposicional desarrollado en Java con AST binario, FNC y Método de Resolución de Robinson." />
+  <meta name="author" content="Uriel Méndez Romero" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon/favicon.svg" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/documentation.css" />
+
+  <!-- KaTeX for rendering mathematical formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true},{left: '\\[', right: '\\]', display: true},{left: '\\(', right: '\\)', display: false}]});"></script>
+</head>
+
+<body>
+
+  <!-- NAVEGACIÓN / HEADER -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span class="logo-dot"></span> Uriel<span class="gradient-text">Méndez</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html#hero" class="nav-link">Inicio</a></li>
+          <li><a href="index.html#proyectos" class="nav-link active">Proyectos</a></li>
+          <li><a href="https://github.com/urielmndzr/AutomatedTheoremProver" target="_blank" rel="noopener"
+              class="nav-link">Repositorio GitHub ↗</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="theorem-prover-en.html" class="lang-toggle" style="text-decoration: none;" aria-label="Switch to English">
+          <svg class="globe-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="lang-opt lang-opt-es active">ES</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-opt lang-opt-en">EN</span>
+        </a>
+
+        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+          <!-- Icono Luna (tema claro) -->
+          <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <!-- Icono Sol (tema oscuro) -->
+          <svg class="sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <a href="index.html#proyectos" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.88rem;">
+          ← Volver
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO DE DOCUMENTACIÓN -->
+  <main class="container doc-container" style="padding-top: calc(var(--header-height) + 1.5rem);">
+    <div class="doc-layout">
+
+      <!-- SIDEBAR DE NAVEGACIÓN -->
+      <aside class="doc-sidebar glass-card">
+        <div class="doc-sidebar-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Índice de Contenidos
+        </div>
+
+        <ul class="doc-nav-list">
+          <li>
+            <a href="#introduccion" class="doc-nav-link active">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              1. Visión General
+            </a>
+          </li>
+          <li>
+            <a href="#arquitectura" class="doc-nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              2. Arquitectura
+            </a>
+          </li>
+          <li>
+            <a href="#arbol-sintaxis" class="doc-nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+              3. Árbol de Sintaxis (AST)
+            </a>
+          </li>
+          <li>
+            <a href="#normalizacion-fnc" class="doc-nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 22 22 12"></polyline>
+              </svg>
+              4. Normalización a FNC
+            </a>
+          </li>
+          <li>
+            <a href="#resolucion-atp" class="doc-nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              5. Resolución Robinson
+            </a>
+          </li>
+          <li>
+            <a href="#sintaxis-operadores" class="doc-nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+              6. Operadores Lógicos
+            </a>
+          </li>
+          <li>
+            <a href="#ejemplo-demostracion" class="doc-nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              7. Ejemplo Paso a Paso
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- ÁREA DE CONTENIDO DOCS -->
+      <article class="doc-content">
+
+        <!-- HEADER BANNER -->
+        <header class="doc-header-banner">
+          <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">
+            Demostrador Automático de Teoremas <span class="gradient-text">(ATP)</span>
+          </h1>
+          <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 850px;">
+            Motor de <strong>Computación Simbólica e Inteligencia Artificial Deductiva</strong> en Lógica Proposicional. Diseñado para maximizar la eficiencia mediante manipulaciones sintácticas en Árboles de Sintaxis Abstracta (AST) y ofrecer trazabilidad transparente desglosando paso a paso cada regla de reescritura FNC y refutación por el Método de Resolución de Robinson.
+          </p>
+        </header>
+
+        <!-- SECCIÓN 1: INTRODUCCIÓN Y VISIÓN GENERAL -->
+        <section id="introduccion" class="doc-section glass-card">
+          <h2 class="doc-section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            1. Visión General
+          </h2>
+          <p class="doc-text">
+            El <strong>Demostrador Automático de Teoremas (Automated Theorem Prover - ATP)</strong> es un motor de
+            computación simbólica que automatiza la validación de argumentos formales en Lógica Proposicional. Dado un
+            conjunto de premisas <span class="symbol-badge"><i>P</i><sub>1</sub>, <i>P</i><sub>2</sub>, ...,
+              <i>P</i><sub>n</sub></span> y una conclusión <span class="symbol-badge"><i>C</i></span>, el sistema
+            determina si el argumento constituye una <strong>deducción válida</strong>.
+          </p>
+
+          <div class="doc-grid-2">
+            <div class="doc-feature-card">
+              <div class="doc-feature-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+              </div>
+              <h3 class="doc-subtitle" style="margin-top: 0;">Eficiencia con Árboles Binarios (AST)</h3>
+              <p class="doc-text" style="font-size: 0.92rem; margin-bottom: 0.5rem;">
+                Las <strong>Tablas de Verdad</strong> tradicionales colapsan computacionalmente al requerir
+                2<sup><i>N</i></sup> evaluaciones combinatorias. Con solo 20 variables, demandarían más de
+                <strong>1,048,576 filas</strong>.
+              </p>
+              <p class="doc-text" style="font-size: 0.92rem; margin-bottom: 0;">
+                Este sistema utiliza <strong>Árboles de Sintaxis Abstracta (AST) binarios</strong> que sustituyen la
+                evaluación exhaustiva por transformaciones simbólicas directas en memoria, logrando una ejecución ágil y
+                de mínimo consumo de recursos.
+              </p>
+            </div>
+
+            <div class="doc-feature-card">
+              <div class="doc-feature-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              <h3 class="doc-subtitle" style="margin-top: 0;">Transparencia y Trazabilidad Paso a Paso</h3>
+              <p class="doc-text" style="font-size: 0.92rem; margin-bottom: 0.5rem;">
+                A diferencia de los solucionadores tipo "caja negra" que únicamente devuelven un valor booleano, este
+                demostrador audita e imprime el proceso de deducción completo.
+              </p>
+              <p class="doc-text" style="font-size: 0.92rem; margin-bottom: 0;">
+                Muestra la expresión tras aplicar la Reducción al Absurdo, cada equivalencia durante la conversión a
+                Forma Normal Conjuntiva (FNC) y cada literal resolvente seleccionado hasta la prueba por refutación.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 2: ARQUITECTURA Y PIPELINE -->
+        <section id="arquitectura" class="doc-section glass-card">
+          <h2 class="doc-section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            2. Arquitectura
+          </h2>
+          <p class="doc-text">
+            El sistema opera mediante un pipeline modular de transformación simbólica dividido en 5 etapas secuenciales:
+          </p>
+
+          <div class="pipeline-container">
+            <div class="pipeline-step">
+              <div class="pipeline-number">1</div>
+              <div class="pipeline-info">
+                <h4>Parsing y Análisis Formal</h4>
+                <p>Lee la cadena textual de la fórmula lógica, reconociendo proposiciones atómicas, conectivos formales
+                  y jerarquía de operadores.</p>
+              </div>
+            </div>
+            <div class="pipeline-connector"></div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-number">2</div>
+              <div class="pipeline-info">
+                <h4>Construcción del Árbol de Sintaxis Abstracta (AST)</h4>
+                <p>Genera una representación binaria en memoria donde cada nodo almacena un operador o literal
+                  manteniendo punteros de navegación a padre e hijos.</p>
+              </div>
+            </div>
+            <div class="pipeline-connector"></div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-number">3</div>
+              <div class="pipeline-info">
+                <h4>Reducción al Absurdo (Planteamiento del Teorema)</h4>
+                <p>Niega la conclusión del argumento para verificar si el conjunto de premisas y la conclusión negada
+                  (<span class="symbol-badge"><i>P</i><sub>1</sub> &and; ... &and; <i>P</i><sub>n</sub> &and;
+                    &not;<i>C</i></span>) genera una contradicción.</p>
+              </div>
+            </div>
+            <div class="pipeline-connector"></div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-number">4</div>
+              <div class="pipeline-info">
+                <h4>Normalización a Forma Normal Conjuntiva (FNC)</h4>
+                <p>Aplica un ciclo iterativo de equivalencias lógicas (eliminación de condicionales, De Morgan,
+                  distributividad) para transformar el árbol en conjunciones de cláusulas disyuntivas.</p>
+              </div>
+            </div>
+            <div class="pipeline-connector"></div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-number">5</div>
+              <div class="pipeline-info">
+                <h4>Motor de Demostración (Método de Resolución de Robinson)</h4>
+                <p>Extrae las cláusulas y aplica el Método de Resolución de Robinson buscando derivar la cláusula vacía
+                  (<span class="symbol-badge">&#9633;</span>), certificando la validez absoluta del teorema.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 3: ÁRBOLES DE SINTAXIS ABSTRACTA (AST) -->
+        <section id="arbol-sintaxis" class="doc-section glass-card">
+          <h2 class="doc-section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            3. Árbol de Sintaxis (AST)
+          </h2>
+          <p class="doc-text">
+            El corazón de la eficiencia del demostrador reside en la estructura de <strong>Árbol Binario de
+              Sintaxis</strong>:
+          </p>
+
+          <div class="doc-grid-2">
+            <div class="doc-feature-card">
+              <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Nodos Bidireccionales</h4>
+              <p class="doc-text" style="font-size: 0.9rem;">
+                Cada elemento se almacena como un nodo con punteros a <code>izquierdo</code>, <code>derecho</code> y
+                <code>padre</code>. Esto permite realizar rotaciones, sustituciones locales de subárboles y propagación
+                de negaciones sin necesidad de reescribir cadenas de texto.
+              </p>
+            </div>
+
+            <div class="doc-feature-card">
+              <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Recorrido e Inspección In-Order</h4>
+              <p class="doc-text" style="font-size: 0.9rem;">
+                El algoritmo recorre el árbol de manera simétrica (izquierdo &rarr; raíz &rarr; derecho) en cada
+                iteración de transformación. Esto garantiza la generación transparente de la expresión intermedia para
+                su auditoría visual.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 4: NORMALIZACIÓN A FNC -->
+        <section id="normalizacion-fnc" class="doc-section glass-card">
+          <h2 class="doc-section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 22 22 12"></polyline>
+            </svg>
+            4. Normalización a FNC
+          </h2>
+          <p class="doc-text">
+            Para hacer posible la demostración por resolución, el demostrador convierte cualquier fórmula proposicional
+            a su <strong>Forma Normal Conjuntiva (FNC)</strong> aplicando las siguientes equivalencias simbólicas:
+          </p>
+
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Etapa de Conversión</th>
+                  <th>Equivalencia Lógica Aplicada</th>
+                  <th>Efecto en la Estructura</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Eliminación de Bicondicionales</strong></td>
+                  <td><code
+                      class="symbol-badge"><i>A</i> &hArr; <i>B</i> &equiv; (<i>A</i> &rArr; <i>B</i>) &and; (<i>B</i> &rArr; <i>A</i>)</code>
+                  </td>
+                  <td>Descompone equivalencias en dos condicionales enlazados por una conjunción.</td>
+                </tr>
+                <tr>
+                  <td><strong>2. Eliminación de Condicionales</strong></td>
+                  <td><code class="symbol-badge"><i>A</i> &rArr; <i>B</i> &equiv; &not;<i>A</i> &or; <i>B</i></code>
+                  </td>
+                  <td>Transforma las implicaciones en disyunciones con el antecedente negado.</td>
+                </tr>
+                <tr>
+                  <td><strong>3. Leyes de De Morgan</strong></td>
+                  <td><code
+                      class="symbol-badge">&not;(<i>A</i> &and; <i>B</i>) &equiv; &not;<i>A</i> &or; &not;<i>B</i></code><br /><code
+                      class="symbol-badge">&not;(<i>A</i> &or; <i>B</i>) &equiv; &not;<i>A</i> &and; &not;<i>B</i></code>
+                  </td>
+                  <td>Empuja las negaciones hacia los nodos hoja (variables átomo).</td>
+                </tr>
+                <tr>
+                  <td><strong>4. Doble Negación</strong></td>
+                  <td><code class="symbol-badge">&not;&not;<i>A</i> &equiv; <i>A</i></code></td>
+                  <td>Simplifica y cancela pares de negaciones consecutivas.</td>
+                </tr>
+                <tr>
+                  <td><strong>5. Distribución de Disyunciones</strong></td>
+                  <td><code
+                      class="symbol-badge"><i>A</i> &or; (<i>B</i> &and; <i>C</i>) &equiv; (<i>A</i> &or; <i>B</i>) &and; (<i>A</i> &or; <i>C</i>)</code>
+                  </td>
+                  <td>Aplica distributividad para garantizar la forma clausular final.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 5: MOTOR DE RESOLUCIÓN ATP -->
+        <section id="resolucion-atp" class="doc-section glass-card">
+          <h2 class="doc-section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            5. Resolución Robinson
+          </h2>
+          <p class="doc-text">
+            Una vez obtenida la FNC, la expresión se convierte en un conjunto de cláusulas <span
+              class="symbol-badge"><i>S</i> = {<i>C</i><sub>1</sub>, <i>C</i><sub>2</sub>, ...,
+              <i>C</i><sub>m</sub>}</span>. El motor ejecuta el <strong>Método de Resolución de Robinson</strong> para
+            refutar el conjunto negado:
+          </p>
+
+          <div class="doc-callout info">
+            <div class="doc-callout-icon">💡</div>
+            <div class="doc-callout-content">
+              <h4 style="margin-bottom: 0.3rem; color: var(--accent-primary);">Método de Resolución de Robinson</h4>
+              <p>
+                Dadas dos cláusulas con literales opuestos <span class="symbol-badge"><i>C</i><sub>1</sub> = <i>L</i>
+                  &or; <i>A</i></span> y <span class="symbol-badge"><i>C</i><sub>2</sub> = &not;<i>L</i> &or;
+                  <i>B</i></span>, el sistema deduce el resolvente <span class="symbol-badge"><i>R</i> = <i>A</i> &or;
+                  <i>B</i></span>. La reducción iterativa busca derivar la <strong>cláusula vacía (&#9633;)</strong>,
+                probando que el conjunto negado es insatisfacible y por tanto el teorema es <strong>VÁLIDO</strong>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 6: OPERADORES Y SINTAXIS -->
+        <section id="sintaxis-operadores" class="doc-section glass-card">
+          <h2 class="doc-section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            6. Operadores Lógicos
+          </h2>
+          <p class="doc-text">
+            Resumen general de los conectivos lógicos reconocidos por el demostrador:
+          </p>
+
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Operación Lógica</th>
+                  <th>Símbolos Aceptados</th>
+                  <th>Ejemplo de Expresión</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Negación</strong></td>
+                  <td><span class="symbol-badge">¬</span> <span class="symbol-badge">~</span> <span
+                      class="symbol-badge">!</span></td>
+                  <td><code>¬P</code>, <code>~P</code> o <code>!P</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Conjunción (Y)</strong></td>
+                  <td><span class="symbol-badge">&amp;</span></td>
+                  <td><code>P &amp; Q</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Disyunción (O)</strong></td>
+                  <td><span class="symbol-badge">|</span></td>
+                  <td><code>P | Q</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Condicional (Implicación)</strong></td>
+                  <td><span class="symbol-badge">&gt;</span></td>
+                  <td><code>P &gt; Q</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Bicondicional (Equivalencia)</strong></td>
+                  <td><span class="symbol-badge">=</span></td>
+                  <td><code>P = Q</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Agrupaciones</strong></td>
+                  <td><span class="symbol-badge">()</span> <span class="symbol-badge">[]</span> <span
+                      class="symbol-badge">{}</span></td>
+                  <td><code>((P &gt; Q) &amp; P) &gt; Q</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 7: EJEMPLO DE DEMOSTRACIÓN -->
+        <section id="ejemplo-demostracion" class="doc-section glass-card">
+          <h2 class="doc-section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            7. Ejemplo Paso a Paso
+          </h2>
+          <p class="doc-text">
+            Muestra de la ejecución real del sistema resolviendo el teorema formal de Silogismo Hipotético:
+          </p>
+
+          <div style="text-align: center; margin: 1.25rem 0;">
+            <code class="symbol-badge"
+              style="font-size: 1.15rem; padding: 0.6rem 1.4rem;">((<i>P</i> &rArr; <i>Q</i>) &and; (<i>Q</i> &rArr; <i>R</i>) &and; <i>P</i>) &rArr; <i>R</i></code>
+          </div>
+
+          <div class="code-block-container">
+            <div class="code-header">
+              <div class="code-dots">
+                <span class="code-dot red"></span>
+                <span class="code-dot yellow"></span>
+                <span class="code-dot green"></span>
+              </div>
+              <span>Traza de Ejecución Transparente en Consola (Salida del Demostrador)</span>
+            </div>
+            <pre class="code-body"><code>================================================================================
+                   DEMOSTRADOR AUTOMÁTICO DE TEOREMAS                           
+================================================================================
+[FASE 1: Análisis Sintáctico y Construcción del AST]
+  Fórmula leída: (((P > Q) & (Q > R) & P) > R)
+
+[FASE 2: Reducción al Absurdo]
+  Regla aplicada:     Negación del teorema para prueba por refutación
+  Antes (Teorema):    (((P > Q) & (Q > R) & P) > R)
+  Después (Absurdo):  (((P > Q) & (Q > R) & P) & ¬R)
+
+[FASE 3: Transformación a Forma Normal Conjuntiva (FNC)]
+  [Paso 1 - FNC]: Eliminación de Condicionales (A > B => ¬A | B)
+    Antes (Subfórmula):   (P > Q)
+    Después (Subfórmula): (¬P | Q)
+    Fórmula actual:       (((¬P | Q) & (Q > R) & P) & ¬R)
+
+  [Paso 2 - FNC]: Eliminación de Condicionales (A > B => ¬A | B)
+    Antes (Subfórmula):   (Q > R)
+    Después (Subfórmula): (¬Q | R)
+    Fórmula actual:       (((¬P | Q) & (¬Q | R) & P) & ¬R)
+
+  Fórmula final en FNC: ((¬P | Q) & (¬Q | R) & P & ¬R)
+
+[FASE 4: Extracción de Cláusulas y Resolución]
+  Cláusulas iniciales extraídas: [[¬P, Q], [¬Q, R], [P], [¬R]]
+
+  --- PASO 1 [Resolución Unitaria] ---
+    Literal unitario seleccionado: P   ==> Cláusulas restantes: [[Q], [¬Q, R], [¬R]]
+
+  --- PASO 2 [Resolución Unitaria] ---
+    Literal unitario seleccionado: Q   ==> Cláusulas restantes: [[R], [¬R]]
+
+  --- PASO 3 [Resolución Unitaria] ---
+    Literal unitario seleccionado: R   ==> Cláusulas resultantes: [] + [[]]
+
+  --> ¡CONTRADICCIÓN ENCONTRADA! (Derivada cláusula vacía [])
+  --> RESULTADO: El teorema es VÁLIDO.</code></pre>
+          </div>
+
+          <div class="doc-callout tip">
+            <div class="doc-callout-icon">✅</div>
+            <div class="doc-callout-content">
+              <h4 style="margin-bottom: 0.3rem; color: #10b981;">Validación Certificada</h4>
+              <p>
+                Al derivar la cláusula vacía en el paso 3 mediante sustitución de literales complementarios, el
+                demostrador certifica formalmente que la negación del teorema genera una contradicción insatisfacible,
+                acreditando la absoluta validez del argumento formal.
+              </p>
+            </div>
+          </div>
+
+          <!-- EJEMPLO 2: DE MORGAN ANIDADO, DOBLE NEGACIÓN Y DISTRIBUTIVA -->
+          <h3 class="doc-subtitle" style="margin-top: 2.5rem;">Ejemplo 2: Leyes de De Morgan Anidadas, Doble Negación y Ley Distributiva</h3>
+          <p class="doc-text">
+            Este ejemplo muestra cómo el motor aplica múltiples leyes encadenadas: De Morgan anidado (<span class="symbol-badge">&not;(<i>A</i> &or; <i>B</i>)</span> y <span class="symbol-badge">&not;(<i>A</i> &and; <i>B</i>)</span>), Doble Negación (<span class="symbol-badge">&not;&not;<i>A</i> &rArr; <i>A</i></span>) y la Ley Distributiva (<span class="symbol-badge"><i>P</i> &or; (<i>Q</i> &and; <i>R</i>) &rArr; (<i>P</i> &or; <i>Q</i>) &and; (<i>P</i> &or; <i>R</i>)</span>):
+          </p>
+
+          <div style="text-align: center; margin: 1.25rem 0;">
+            <code class="symbol-badge" style="font-size: 1.15rem; padding: 0.6rem 1.4rem;">&not;((<i>P</i> &or; (<i>Q</i> &and; <i>R</i>))) &rArr; (&not;<i>P</i> &and; (&not;<i>Q</i> &or; &not;<i>R</i>))</code>
+          </div>
+
+          <div class="code-block-container">
+            <div class="code-header">
+              <div class="code-dots">
+                <span class="code-dot red"></span>
+                <span class="code-dot yellow"></span>
+                <span class="code-dot green"></span>
+              </div>
+              <span>Traza Completa de Ejecución en Consola (Demostrador Automático)</span>
+            </div>
+            <pre class="code-body"><code>================================================================================
+                   DEMOSTRADOR AUTOMÁTICO DE TEOREMAS                           
+================================================================================
+[FASE 1: Análisis Sintáctico y Construcción del AST]
+  Fórmula leída: (¬((P | (Q & R))) > (¬P & (¬Q | ¬R)))
+
+[FASE 2: Reducción al Absurdo]
+  Regla aplicada:     Negación del teorema para prueba por refutación
+  Antes (Teorema):    (¬((P | (Q & R))) > (¬P & (¬Q | ¬R)))
+  Después (Absurdo):  (¬((P | (Q & R))) & ¬((¬P & (¬Q | ¬R))))
+
+[FASE 3: Transformación a Forma Normal Conjuntiva (FNC)]
+  [Paso 1 - FNC]: Ley de De Morgan (¬(A | B) => ¬A & ¬B)
+    Antes (Subfórmula):   ¬((P | (Q & R)))
+    Después (Subfórmula): (¬P & ¬((Q & R)))
+    Fórmula actual:       ((¬P & ¬((Q & R))) & ¬((¬P & (¬Q | ¬R))))
+
+  [Paso 2 - FNC]: Ley de De Morgan (¬(A & B) => ¬A | ¬B)
+    Antes (Subfórmula):   ¬((Q & R))
+    Después (Subfórmula): (¬Q | ¬R)
+    Fórmula actual:       ((¬P & (¬Q | ¬R)) & ¬((¬P & (¬Q | ¬R))))
+
+  [Paso 3 - FNC]: Ley de De Morgan (¬(A & B) => ¬A | ¬B)
+    Antes (Subfórmula):   ¬((¬P & (¬Q | ¬R)))
+    Después (Subfórmula): (¬P | ¬((¬Q | ¬R)))
+    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (¬P | ¬((¬Q | ¬R))))
+
+  [Paso 4 - FNC]: Ley de De Morgan (¬(A | B) => ¬A & ¬B)
+    Antes (Subfórmula):   ¬((¬Q | ¬R))
+    Después (Subfórmula): (¬Q & ¬R)
+    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (¬P | (¬Q & ¬R)))
+
+  [Paso 5 - FNC]: Eliminación de Doble Negación (¬¬A => A)
+    Antes (Subfórmula):   ¬¬R
+    Después (Subfórmula): ((¬P & (¬Q | ¬R)) & (¬P | (¬Q & R)))
+    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (¬P | (¬Q & R)))
+
+  [Paso 6 - FNC]: Eliminación de Doble Negación (¬¬A => A)
+    Antes (Subfórmula):   ¬¬P
+    Después (Subfórmula): ((¬P & (¬Q | ¬R)) & (P | (¬Q & R)))
+    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (P | (¬Q & R)))
+
+  [Paso 7 - FNC]: Eliminación de Doble Negación (¬¬A => A)
+    Antes (Subfórmula):   ¬¬Q
+    Después (Subfórmula): ((¬P & (¬Q | ¬R)) & (P | (Q & R)))
+    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (P | (Q & R)))
+
+  Fórmula final en FNC: ((¬P & (¬Q | ¬R)) & ((P | Q) & (P | R)))
+
+[FASE 4: Extracción de Cláusulas y Resolución]
+  Cláusulas iniciales extraídas: [[¬P], [¬Q, ¬R], [P, Q], [P, R]]
+
+  --- PASO 1 [Resolución Unitaria] ---
+    Literal unitario seleccionado: ¬P  ==> Cláusulas restantes: [[¬Q, ¬R], [Q], [R]]
+
+  --- PASO 2 [Resolución Unitaria] ---
+    Literal unitario seleccionado: Q   ==> Cláusulas restantes: [[¬R], [R]]
+
+  --- PASO 3 [Resolución Unitaria] ---
+    Literal unitario seleccionado: ¬R  ==> Cláusulas resultantes: [] + [[]]
+
+  --> ¡CONTRADICCIÓN ENCONTRADA! (Derivada cláusula vacía [])
+  --> RESULTADO: El teorema es VÁLIDO.</code></pre>
+          </div>
+
+          <div class="doc-callout info">
+            <div class="doc-callout-icon">🔍</div>
+            <div class="doc-callout-content">
+              <h4 style="margin-bottom: 0.3rem; color: var(--accent-primary);">Análisis del Desglose de Fases y Equivalencias</h4>
+              <p>
+                La traza completa muestra con total claridad el ciclo interno del demostrado: desde la construcción del AST en la Fase 1, la negación de la conclusión en la Fase 2, la aplicación secuencial de las 7 reglas de FNC (De Morgan, doble negación y distributiva) en la Fase 3, hasta la extracción de las 4 cláusulas y la resolución por refutación unitaria en la Fase 4.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div style="font-size: 0.9rem; color: var(--text-secondary);">
+        © <span id="year">2026</span> Uriel Méndez Romero. Todos los derechos reservados.
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://github.com/urielmndzr" target="_blank" rel="noopener" class="social-icon-btn"
+          aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+        <a href="https://linkedin.com/in/urielmendezr" target="_blank" rel="noopener" class="social-icon-btn"
+          aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Inline Script para activar el Conmutador de Tema y Navegación Sticky en la Documentación -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Año dinámico en footer
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Tema Claro / Oscuro
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const currentTheme = document.documentElement.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+        });
+      }
+
+      // Scroll Spy para Sidebar Links
+      const navLinks = document.querySelectorAll('.doc-nav-link');
+      const docSections = document.querySelectorAll('.doc-section');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        docSections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
