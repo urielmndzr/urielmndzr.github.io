@@ -83,14 +83,16 @@ const projectsData = [
   {
     id: 1,
     title: "Demostrador Automático de Teoremas (2024)",
-    category: "Investigación y Algoritmos",
-    description: "Marco computacional diseñado para automatizar la validación de argumentos en Lógica Proposicional mediante la transformación de lenguaje formal en demostraciones ejecutables por máquina. Incorpora un analizador léxico y sintáctico (parser) personalizado desarrollado con JavaCC, estructuras de Árboles de Sintaxis Binaria (AST) para la aplicación recursiva de leyes lógicas, un motor de normalización a Forma Normal Conjuntiva (CNF) y demostración automática de teoremas (ATP) basada en el Principio de Resolución.",
+    category: "Computación Simbólica e Inteligencia Artificial",
+    description: "Motor de Computación Simbólica e IA Deductiva diseñado para la validación automática de teoremas en Lógica Proposicional. Sustituye el cómputo exponencial de las tablas de verdad tradicionales (2ⁿ) por una manipulación sintáctica eficiente sobre Árboles de Sintaxis Abstracta (AST). Garantiza trazabilidad transparente al auditar y desglosar paso a paso cada regla de reescritura FNC y derivación mediante el Método de Resolución de Robinson.",
     image: "assets/images/projects/theorem-prover/logo.png",
     images: [
       "assets/images/projects/theorem-prover/logo.png"
     ],
-    technologies: ["Java", "Lógica Proposicional", "Parsing", "Algoritmos", "Estructuras de Datos"],
+    technologies: ["Java", "JavaCC", "Computación Simbólica", "Lógica Proposicional", "AST Binarios", "Normalización FNC", "Resolución de Robinson"],
     demoUrl: "#",
+    docUrl: "theorem-prover.html",
+    hasDocModal: true,
     repoUrl: "https://github.com/urielmndzr/AutomatedTheoremProver"
   },
   {

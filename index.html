@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/documentation.css" />
 </head>
 
 <body>
@@ -357,6 +358,87 @@
       </div>
     </div>
   </footer>
+
+  <!-- MODAL DE DOCUMENTACIÓN TÉCNICA DEL DEMOSTRADOR -->
+  <div id="doc-modal" class="doc-modal" aria-hidden="true" role="dialog">
+    <div class="doc-modal-container">
+      <div class="doc-modal-header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span class="logo-dot"></span>
+          <h3 style="font-size: 1.15rem; font-weight: 700;">Documentación Rápida: Demostrador Automático de Teoremas
+          </h3>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <a href="theorem-prover.html" target="_blank" class="btn btn-primary"
+            style="padding: 0.4rem 0.9rem; font-size: 0.82rem;">
+            <span>Página Completa ↗</span>
+          </a>
+          <button id="doc-modal-close" class="doc-modal-close" aria-label="Cerrar modal">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <div class="doc-modal-body">
+        <!-- Banner del Modal -->
+        <div class="doc-header-banner" style="padding: 1.5rem; margin-bottom: 1.5rem;">
+          <h2 style="font-size: 1.6rem; margin-bottom: 0.4rem;">
+            Demostrador Automático de Teoremas <span class="gradient-text">(ATP)</span>
+          </h2>
+          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+            Motor de <strong>Computación Simbólica e Inteligencia Artificial Deductiva</strong> en Lógica Proposicional.
+            Reemplaza la evaluación exponencial de las tablas de verdad tradicionales (2ⁿ) por una manipulación
+            sintáctica eficiente sobre <strong>Árboles de Sintaxis Abstracta (AST)</strong>. Ofrece
+            <strong>transparencia total</strong> al desglosar paso a paso cada regla de reescritura FNC y refutación por
+            el <strong>Método de Resolución de Robinson</strong>.
+          </p>
+        </div>
+
+        <!-- Pipeline resumido en el Modal -->
+        <h3 class="doc-subtitle">Flujo de Procesamiento Algorítmico</h3>
+        <div class="pipeline-container">
+          <div class="pipeline-step">
+            <div class="pipeline-number">1</div>
+            <div class="pipeline-info">
+              <h4>Parsing y Análisis Formal</h4>
+              <p>Reconocimiento de premisas, conclusión y conectivos lógicos con manejo de precedencia.</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-number">2</div>
+            <div class="pipeline-info">
+              <h4>Construcción del AST y Reducción al Absurdo</h4>
+              <p>Representación en <strong>Árbol Binario de Sintaxis (AST)</strong> —con operadores como nodos internos
+                y variables como hojas— y negación de la conclusión (<i>P</i><sub>1</sub> &and; <i>P</i><sub>2</sub>
+                &and; ... &and; &not;<i>C</i>).</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-number">3</div>
+            <div class="pipeline-info">
+              <h4>Normalización a Forma Normal Conjuntiva (FNC)</h4>
+              <p>Conversión en <strong>conjunciones de cláusulas disyuntivas (FNC)</strong> mediante 5 pasos
+                (eliminación de bicondicionales, condicionales, De Morgan, doble negación y distributividad).</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-number">4</div>
+            <div class="pipeline-info">
+              <h4>Método de Resolución de Robinson (&#9633; Cláusula Vacía)</h4>
+              <p>Cancelación de literales complementarios hasta derivar la cláusula vacía, certificando la validez del
+                teorema.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
+          <a href="theorem-prover.html" class="btn btn-primary" style="padding: 0.75rem 1.75rem;">
+            <span>Explorar Documentación Técnica Completa →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/data.js"></script>

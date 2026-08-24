@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initNavbarScroll();
   initMobileMenu();
+  initDocModal();
 });
 
 /* --- TEMA CLARO / OSCURO CON LOCALSTORAGE --- */
@@ -118,9 +119,15 @@ function renderProjects() {
           ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
         </div>
         <div class="project-links">
-          ${project.repoUrl !== '#' ? `
+          ${project.docUrl ? `
+            <a href="${project.docUrl}" class="btn btn-primary btn-open-doc" style="padding: 0.45rem 1rem; font-size: 0.82rem;" data-doc-target="${project.docUrl}">
+              <span>Ver Documentación</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            </a>
+          ` : ''}
+          ${project.repoUrl && project.repoUrl !== '#' ? `
             <a href="${project.repoUrl}" target="_blank" rel="noopener" class="project-link">
-              <span>GitHub / Repositorio</span>
+              <span>GitHub</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
             </a>
           ` : ''}
@@ -244,3 +251,47 @@ function initMobileMenu() {
     });
   }
 }
+
+/* --- MODAL DE DOCUMENTACIÓN TÉCNICA --- */
+function initDocModal() {
+  const modal = document.getElementById('doc-modal');
+  const closeBtn = document.getElementById('doc-modal-close');
+  const openBtns = document.querySelectorAll('.btn-open-doc');
+
+  if (!modal) return;
+
+  const openModal = (e) => {
+    // Si la pantalla es pequeña o prefiere abrir en nueva pestaña con Ctrl/Cmd, permite el comportamiento por defecto del enlace.
+    if (e.ctrlKey || e.metaKey) return;
+    
+    e.preventDefault();
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  openBtns.forEach(btn => btn.addEventListener('click', openModal));
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+}
+
