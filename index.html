@@ -40,16 +40,27 @@
 
       <nav>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="#hero" class="nav-link active">Inicio</a></li>
-          <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
-          <li><a href="#trayectoria" class="nav-link">Trayectoria</a></li>
-          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-          <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
-          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+          <li><a href="#hero" class="nav-link active" data-i18n="nav.home">Inicio</a></li>
+          <li><a href="#sobre-mi" class="nav-link" data-i18n="nav.about">Sobre Mí</a></li>
+          <li><a href="#trayectoria" class="nav-link" data-i18n="nav.trajectory">Trayectoria</a></li>
+          <li><a href="#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a></li>
+          <li><a href="#habilidades" class="nav-link" data-i18n="nav.skills">Habilidades</a></li>
+          <li><a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
+        <button id="lang-toggle" class="lang-toggle" aria-label="Cambiar idioma">
+          <svg class="globe-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="lang-opt lang-opt-es active">ES</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-opt lang-opt-en">EN</span>
+        </button>
+
         <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
           <!-- Icono Luna (visible en tema claro) -->
           <svg class="moon-icon" viewBox="0 0 24 24">
@@ -82,10 +93,10 @@
     <div class="container hero-grid">
       <div class="hero-content reveal active">
         <div class="hero-badge">
-          <span class="badge-pulse"></span> Disponible para nuevos retos y proyectos
+          <span class="badge-pulse"></span> <span data-i18n="hero.badge">Disponible para nuevos retos y proyectos</span>
         </div>
         <h1 class="hero-title">
-          Hola, soy <br />
+          <span data-i18n="hero.greeting">Hola, soy</span> <br />
           <span class="gradient-text" id="hero-name">Uriel Méndez Romero</span>
         </h1>
         <div class="hero-subtitle" id="hero-title">Ingeniero en Sistemas Computacionales</div>
@@ -95,14 +106,14 @@
 
         <div class="hero-cta">
           <a href="#trayectoria" class="btn btn-primary">
-            <span>Ver Experiencia</span>
+            <span data-i18n="hero.exp_btn">Ver Experiencia</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
           <a href="#contacto" class="btn btn-secondary">
-            <span>Contacto Directo</span>
+            <span data-i18n="hero.contact_btn">Contacto Directo</span>
           </a>
         </div>
       </div>
@@ -118,8 +129,8 @@
   <!-- SECCIÓN SOBRE MÍ Y STATS -->
   <section id="sobre-mi" class="section">
     <div class="container">
-      <h2 class="section-title">Sobre <span class="gradient-text">Mí</span></h2>
-      <p class="section-subtitle">Ingeniero en Sistemas Computacionales · Graduado con Mención Honorífica</p>
+      <h2 class="section-title" data-i18n="about.title" data-i18n-html="true">Sobre <span class="gradient-text">Mí</span></h2>
+      <p class="section-subtitle" data-i18n="about.subtitle">Ingeniero en Sistemas Computacionales · Graduado con Mención Honorífica</p>
 
       <div class="glass-card reveal" style="padding: 3rem;">
         <p id="about-text"
@@ -138,8 +149,8 @@
   <!-- SECCIÓN TRAYECTORIA -->
   <section id="trayectoria" class="section section-alt">
     <div class="container">
-      <h2 class="section-title">Mi <span class="gradient-text">Trayectoria</span></h2>
-      <p class="section-subtitle">Experiencia profesional en la industria y formación académica.</p>
+      <h2 class="section-title" data-i18n="trajectory.title" data-i18n-html="true">Mi <span class="gradient-text">Trayectoria</span></h2>
+      <p class="section-subtitle" data-i18n="trajectory.subtitle">Experiencia profesional en la industria y formación académica.</p>
 
       <div class="timeline" id="timeline-container">
         <!-- Renderizado dinámico desde js/data.js por js/main.js -->
@@ -150,8 +161,8 @@
   <!-- SECCIÓN PROYECTOS -->
   <section id="proyectos" class="section">
     <div class="container">
-      <h2 class="section-title">Proyectos <span class="gradient-text">Destacados</span></h2>
-      <p class="section-subtitle">Investigación, aplicaciones analíticas y soluciones de software creadas.</p>
+      <h2 class="section-title" data-i18n="projects.title" data-i18n-html="true">Proyectos <span class="gradient-text">Destacados</span></h2>
+      <p class="section-subtitle" data-i18n="projects.subtitle">Investigación, aplicaciones analíticas y soluciones de software creadas.</p>
 
       <div class="projects-grid" id="projects-grid">
         <!-- Renderizado dinámico desde js/data.js por js/main.js -->
@@ -162,8 +173,8 @@
   <!-- SECCIÓN HABILIDADES -->
   <section id="habilidades" class="section section-alt">
     <div class="container">
-      <h2 class="section-title">Habilidades <span class="gradient-text">Técnicas y Blandas</span></h2>
-      <p class="section-subtitle">Conocimientos estructurados por áreas de especialización, herramientas e idiomas.</p>
+      <h2 class="section-title" data-i18n="skills.title" data-i18n-html="true">Habilidades <span class="gradient-text">Técnicas y Blandas</span></h2>
+      <p class="section-subtitle" data-i18n="skills.subtitle">Conocimientos estructurados por áreas de especialización, herramientas e idiomas.</p>
 
       <!-- Fila 1: Lenguajes y ERP -->
       <div class="skills-container" style="margin-bottom: 2rem;">
@@ -174,7 +185,7 @@
               <polyline points="16 18 22 12 16 6"></polyline>
               <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
-            Programación y Lenguajes
+            <span data-i18n="skills.programming">Programación y Lenguajes</span>
           </h3>
           <div class="skills-chips-wrapper" id="programming-skills">
             <!-- Renderizado dinámico -->
@@ -189,7 +200,7 @@
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
               <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
             </svg>
-            Sistemas Empresariales y ERP
+            <span data-i18n="skills.erp">Sistemas Empresariales y ERP</span>
           </h3>
           <div class="skills-chips-wrapper" id="erp-skills">
             <!-- Renderizado dinámico -->
@@ -207,7 +218,7 @@
               <line x1="12" y1="20" x2="12" y2="4"></line>
               <line x1="6" y1="20" x2="6" y2="14"></line>
             </svg>
-            BI & Analítica de Datos
+            <span data-i18n="skills.bi">BI & Analítica de Datos</span>
           </h3>
           <div class="skills-chips-wrapper" id="bi-skills">
             <!-- Renderizado dinámico -->
@@ -223,7 +234,7 @@
                 d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
               </path>
             </svg>
-            Herramientas, DevOps y Metodologías
+            <span data-i18n="skills.tools">Herramientas, DevOps y Metodologías</span>
           </h3>
           <div class="skills-chips-wrapper" id="devops-skills">
             <!-- Renderizado dinámico -->
@@ -241,7 +252,7 @@
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
               <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
-            Habilidades Blandas
+            <span data-i18n="skills.soft">Habilidades Blandas</span>
           </h3>
           <div class="soft-skills-wrapper" id="soft-skills">
             <!-- Renderizado dinámico -->
@@ -257,7 +268,7 @@
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
               </path>
             </svg>
-            Idiomas
+            <span data-i18n="skills.languages">Idiomas</span>
           </h3>
           <div class="languages-grid" id="languages-container">
             <!-- Renderizado dinámico -->
@@ -270,13 +281,13 @@
   <!-- SECCIÓN CONTACTO -->
   <section id="contacto" class="section">
     <div class="container">
-      <h2 class="section-title">Ponte en <span class="gradient-text">Contacto</span></h2>
-      <p class="section-subtitle">¿Interesado en mi perfil o en colaborar en un proyecto? ¡Hablemos!</p>
+      <h2 class="section-title" data-i18n="contact.title" data-i18n-html="true">Ponte en <span class="gradient-text">Contacto</span></h2>
+      <p class="section-subtitle" data-i18n="contact.subtitle">¿Interesado en mi perfil o en colaborar en un proyecto? ¡Hablemos!</p>
 
       <div class="glass-card contact-info-card reveal reveal-delay-1"
         style="max-width: 820px; margin: 0 auto; text-align: center;">
-        <h3 style="font-size: 1.3rem; margin-bottom: 0.4rem;">Información Directa</h3>
-        <p style="color: var(--text-secondary); max-width: 550px; margin: 0 auto 1.5rem auto; font-size: 0.95rem;">
+        <h3 data-i18n="contact.info_title" style="font-size: 1.3rem; margin-bottom: 0.4rem;">Información Directa</h3>
+        <p data-i18n="contact.info_desc" style="color: var(--text-secondary); max-width: 550px; margin: 0 auto 1.5rem auto; font-size: 0.95rem;">
           No dudes en ponerte en contacto a través de cualquiera de los siguientes medios.
         </p>
 
@@ -289,7 +300,7 @@
               </svg>
             </div>
             <div class="contact-method-detail">
-              <span class="contact-method-label">Correo Electrónico</span>
+              <span class="contact-method-label" data-i18n="contact.email_label">Correo Electrónico</span>
               <span class="contact-method-value" id="contact-email">urielmendezr05@gmail.com</span>
             </div>
           </a>
@@ -303,7 +314,7 @@
               </svg>
             </div>
             <div class="contact-method-detail">
-              <span class="contact-method-label">Teléfono / WhatsApp</span>
+              <span class="contact-method-label" data-i18n="contact.phone_label">Teléfono / WhatsApp</span>
               <span class="contact-method-value" id="contact-phone">+52 229 290 7331</span>
             </div>
           </a>
@@ -316,7 +327,7 @@
               </svg>
             </div>
             <div class="contact-method-detail">
-              <span class="contact-method-label">Ubicación</span>
+              <span class="contact-method-label" data-i18n="contact.location_label">Ubicación</span>
               <span class="contact-method-value" id="contact-location">Veracruz, Ver. México</span>
             </div>
           </div>
@@ -365,13 +376,12 @@
       <div class="doc-modal-header">
         <div style="display: flex; align-items: center; gap: 0.75rem;">
           <span class="logo-dot"></span>
-          <h3 style="font-size: 1.15rem; font-weight: 700;">Documentación Rápida: Demostrador Automático de Teoremas
-          </h3>
+          <h3 data-i18n="modal.header_title" style="font-size: 1.15rem; font-weight: 700;">Documentación Rápida: Demostrador Automático de Teoremas</h3>
         </div>
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <a href="theorem-prover.html" target="_blank" class="btn btn-primary"
+          <a href="theorem-prover.html" target="_blank" class="btn btn-primary" id="doc-modal-header-link"
             style="padding: 0.4rem 0.9rem; font-size: 0.82rem;">
-            <span>Página Completa ↗</span>
+            <span data-i18n="modal.full_page_btn">Página Completa ↗</span>
           </a>
           <button id="doc-modal-close" class="doc-modal-close" aria-label="Cerrar modal">
             ✕
@@ -382,10 +392,10 @@
       <div class="doc-modal-body">
         <!-- Banner del Modal -->
         <div class="doc-header-banner" style="padding: 1.5rem; margin-bottom: 1.5rem;">
-          <h2 style="font-size: 1.6rem; margin-bottom: 0.4rem;">
+          <h2 data-i18n="modal.banner_title" data-i18n-html="true" style="font-size: 1.6rem; margin-bottom: 0.4rem;">
             Demostrador Automático de Teoremas <span class="gradient-text">(ATP)</span>
           </h2>
-          <p style="font-size: 0.95rem; color: var(--text-secondary);">
+          <p data-i18n="modal.banner_desc" data-i18n-html="true" style="font-size: 0.95rem; color: var(--text-secondary);">
             Motor de <strong>Computación Simbólica e Inteligencia Artificial Deductiva</strong> en Lógica Proposicional.
             Reemplaza la evaluación exponencial de las tablas de verdad tradicionales (2ⁿ) por una manipulación
             sintáctica eficiente sobre <strong>Árboles de Sintaxis Abstracta (AST)</strong>. Ofrece
@@ -395,45 +405,41 @@
         </div>
 
         <!-- Pipeline resumido en el Modal -->
-        <h3 class="doc-subtitle">Flujo de Procesamiento Algorítmico</h3>
+        <h3 class="doc-subtitle" data-i18n="modal.pipeline_title">Flujo de Procesamiento Algorítmico</h3>
         <div class="pipeline-container">
           <div class="pipeline-step">
             <div class="pipeline-number">1</div>
             <div class="pipeline-info">
-              <h4>Parsing y Análisis Formal</h4>
-              <p>Reconocimiento de premisas, conclusión y conectivos lógicos con manejo de precedencia.</p>
+              <h4 data-i18n="modal.step1_title">Parsing y Análisis Formal</h4>
+              <p data-i18n="modal.step1_desc">Reconocimiento de premisas, conclusión y conectivos lógicos con manejo de precedencia.</p>
             </div>
           </div>
           <div class="pipeline-step">
             <div class="pipeline-number">2</div>
             <div class="pipeline-info">
-              <h4>Construcción del AST y Reducción al Absurdo</h4>
-              <p>Representación en <strong>Árbol Binario de Sintaxis (AST)</strong> —con operadores como nodos internos
-                y variables como hojas— y negación de la conclusión (<i>P</i><sub>1</sub> &and; <i>P</i><sub>2</sub>
-                &and; ... &and; &not;<i>C</i>).</p>
+              <h4 data-i18n="modal.step2_title">Construcción del AST y Reducción al Absurdo</h4>
+              <p data-i18n="modal.step2_desc">Representación en Árbol Binario de Sintaxis (AST) —con operadores como nodos internos y variables como hojas— y negación de la conclusión (P₁ ∧ P₂ ∧ ... ∧ ¬C).</p>
             </div>
           </div>
           <div class="pipeline-step">
             <div class="pipeline-number">3</div>
             <div class="pipeline-info">
-              <h4>Normalización a Forma Normal Conjuntiva (FNC)</h4>
-              <p>Conversión en <strong>conjunciones de cláusulas disyuntivas (FNC)</strong> mediante 5 pasos
-                (eliminación de bicondicionales, condicionales, De Morgan, doble negación y distributividad).</p>
+              <h4 data-i18n="modal.step3_title">Normalización a Forma Normal Conjuntiva (FNC)</h4>
+              <p data-i18n="modal.step3_desc">Conversión en conjunciones de cláusulas disyuntivas (FNC) mediante 5 pasos (eliminación de bicondicionales, condicionales, De Morgan, doble negación y distributividad).</p>
             </div>
           </div>
           <div class="pipeline-step">
             <div class="pipeline-number">4</div>
             <div class="pipeline-info">
-              <h4>Método de Resolución de Robinson (&#9633; Cláusula Vacía)</h4>
-              <p>Cancelación de literales complementarios hasta derivar la cláusula vacía, certificando la validez del
-                teorema.</p>
+              <h4 data-i18n="modal.step4_title">Método de Resolución de Robinson (□ Cláusula Vacía)</h4>
+              <p data-i18n="modal.step4_desc">Cancelación de literales complementarios hasta derivar la cláusula vacía, certificando la validez del teorema.</p>
             </div>
           </div>
         </div>
 
         <div style="text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
           <a href="theorem-prover.html" class="btn btn-primary" style="padding: 0.75rem 1.75rem;">
-            <span>Explorar Documentación Técnica Completa →</span>
+            <span data-i18n="modal.explore_btn">Explorar Documentación Técnica Completa →</span>
           </a>
         </div>
       </div>
@@ -442,6 +448,7 @@
 
   <!-- Scripts -->
   <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 

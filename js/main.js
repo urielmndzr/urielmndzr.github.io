@@ -4,14 +4,15 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
-  renderProfile();
-  renderTrajectory();
-  renderProjects();
-  renderSkills();
+  initLanguage();
+  renderAllContent();
   initScrollAnimations();
   initNavbarScroll();
   initMobileMenu();
   initDocModal();
+
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
 
 /* --- TEMA CLARO / OSCURO CON LOCALSTORAGE --- */
@@ -32,45 +33,91 @@ function initTheme() {
   }
 }
 
+/* --- CONMUTADOR DE IDIOMA (ES / EN) --- */
+function initLanguage() {
+  const langToggleBtn = document.getElementById('lang-toggle');
+  const currentLang = typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'es';
+
+  if (typeof updateStaticTranslations === 'function') {
+    updateStaticTranslations(currentLang);
+  }
+
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const activeLang = typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'es';
+      const newLang = activeLang === 'es' ? 'en' : 'es';
+      
+      if (typeof setLanguage === 'function') {
+        setLanguage(newLang);
+      }
+      renderAllContent(newLang);
+    });
+  }
+}
+
+function renderAllContent(lang = (typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'es')) {
+  renderProfile(lang);
+  renderTrajectory(lang);
+  renderProjects(lang);
+  renderSkills(lang);
+  initScrollAnimations();
+}
+
 /* --- RENDERIZADO DE PERFIL Y STATS --- */
-function renderProfile() {
+function renderProfile(lang = 'es') {
   if (typeof profileData === 'undefined') return;
+
+  const profileLang = profileData[lang] || profileData;
 
   const heroName = document.getElementById('hero-name');
   const heroTitle = document.getElementById('hero-title');
   const heroTagline = document.getElementById('hero-tagline');
   const aboutText = document.getElementById('about-text');
-  const statsContainer = document.getElementById('stats-container');
   const heroCtaEmail = document.getElementById('hero-cta-email');
 
   // Contact section elements
   const contactPhone = document.getElementById('contact-phone');
   const contactEmail = document.getElementById('contact-email');
   const contactLocation = document.getElementById('contact-location');
+  const languagesContainer = document.getElementById('languages-container');
 
   if (heroName) heroName.textContent = profileData.name;
-  if (heroTitle) heroTitle.textContent = profileData.title;
-  if (heroTagline) heroTagline.textContent = profileData.tagline;
-  if (aboutText) aboutText.textContent = profileData.about;
-  if (heroCtaEmail) heroCtaEmail.href = profileData.socials.email;
+  if (heroTitle) heroTitle.textContent = profileLang.title || profileData.title;
+  if (heroTagline) heroTagline.textContent = profileLang.tagline || profileData.tagline;
+  if (aboutText) aboutText.textContent = profileLang.about || profileData.about;
+  if (heroCtaEmail && profileData.socials) heroCtaEmail.href = profileData.socials.email;
 
-  if (contactPhone) {
+  if (contactPhone && profileData.socials) {
     contactPhone.textContent = profileData.phone;
     contactPhone.href = profileData.socials.phone;
   }
-  if (contactEmail) {
+  if (contactEmail && profileData.socials) {
     contactEmail.textContent = profileData.email;
     contactEmail.href = profileData.socials.email;
   }
   if (contactLocation) contactLocation.textContent = profileData.location;
+
+  // Render languages
+  const langList = profileLang.languages || profileData.languages;
+  if (languagesContainer && langList) {
+    languagesContainer.innerHTML = langList.map(item => `
+      <div class="language-item">
+        <span class="lang-name">${item.name}</span>
+        <span class="lang-level">${item.level}</span>
+      </div>
+    `).join('');
+  }
 }
 
 /* --- RENDERIZADO DE TRAYECTORIA --- */
-function renderTrajectory() {
+function renderTrajectory(lang = 'es') {
   const timelineContainer = document.getElementById('timeline-container');
   if (!timelineContainer || typeof trajectoryData === 'undefined') return;
 
-  timelineContainer.innerHTML = trajectoryData.map((item, index) => {
+  const dataList = (lang === 'en' && trajectoryData.en) ? trajectoryData.en : (trajectoryData.es || trajectoryData);
+
+  timelineContainer.innerHTML = dataList.map((item, index) => {
     let contentHtml = '';
     if (item.points && Array.isArray(item.points)) {
       contentHtml = `
@@ -102,11 +149,14 @@ function renderTrajectory() {
 }
 
 /* --- RENDERIZADO DE PROYECTOS --- */
-function renderProjects() {
+function renderProjects(lang = 'es') {
   const projectsGrid = document.getElementById('projects-grid');
   if (!projectsGrid || typeof projectsData === 'undefined') return;
 
-  projectsGrid.innerHTML = projectsData.map((project, index) => `
+  const dataList = (lang === 'en' && projectsData.en) ? projectsData.en : (projectsData.es || projectsData);
+  const viewDocBtnLabel = lang === 'en' ? 'View Documentation' : 'Ver Documentación';
+
+  projectsGrid.innerHTML = dataList.map((project, index) => `
     <div class="project-card glass-card reveal reveal-delay-${(index % 3) + 1}">
       <div class="project-img-wrapper">
         <img src="${project.image}" alt="${project.title}" loading="lazy" />
@@ -121,7 +171,7 @@ function renderProjects() {
         <div class="project-links">
           ${project.docUrl ? `
             <a href="${project.docUrl}" class="btn btn-primary btn-open-doc" style="padding: 0.45rem 1rem; font-size: 0.82rem;" data-doc-target="${project.docUrl}">
-              <span>Ver Documentación</span>
+              <span>${viewDocBtnLabel}</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
             </a>
           ` : ''}
@@ -135,16 +185,18 @@ function renderProjects() {
       </div>
     </div>
   `).join('');
+
+  // Re-bind modal buttons after render
+  initDocModal();
 }
 
 /* --- RENDERIZADO DE HABILIDADES Y IDIOMAS --- */
-function renderSkills() {
+function renderSkills(lang = 'es') {
   const programmingContainer = document.getElementById('programming-skills');
   const erpContainer = document.getElementById('erp-skills');
   const biContainer = document.getElementById('bi-skills');
   const devopsContainer = document.getElementById('devops-skills');
   const softSkillsContainer = document.getElementById('soft-skills');
-  const languagesContainer = document.getElementById('languages-container');
 
   if (typeof skillsData === 'undefined') return;
 
@@ -168,20 +220,11 @@ function renderSkills() {
     devopsContainer.innerHTML = renderChips(skillsData.toolsAndDevops);
   }
 
-  // Render soft skills badges
-  if (softSkillsContainer && skillsData.softSkills) {
-    softSkillsContainer.innerHTML = skillsData.softSkills.map(soft => `
+  // Render soft skills badges for current language
+  const softList = (skillsData[lang] && skillsData[lang].softSkills) ? skillsData[lang].softSkills : (skillsData.softSkills || []);
+  if (softSkillsContainer && softList) {
+    softSkillsContainer.innerHTML = softList.map(soft => `
       <span class="soft-skill-badge">${soft}</span>
-    `).join('');
-  }
-
-  // Render languages
-  if (languagesContainer && profileData.languages) {
-    languagesContainer.innerHTML = profileData.languages.map(lang => `
-      <div class="language-item">
-        <span class="lang-name">${lang.name}</span>
-        <span class="lang-level">${lang.level}</span>
-      </div>
     `).join('');
   }
 }
@@ -198,8 +241,13 @@ function initScrollAnimations() {
     });
   }, { threshold: 0.15 });
 
-  revealElements.forEach(el => observer.observe(el));
-  document.querySelectorAll('.skills-group').forEach(el => observer.observe(el));
+  revealElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('active');
+    }
+    observer.observe(el);
+  });
 }
 
 /* --- HEADER Y MENU ACTIVO CON SCROLL --- */
@@ -261,13 +309,20 @@ function initDocModal() {
   if (!modal) return;
 
   const openModal = (e) => {
-    // Si la pantalla es pequeña o prefiere abrir en nueva pestaña con Ctrl/Cmd, permite el comportamiento por defecto del enlace.
     if (e.ctrlKey || e.metaKey) return;
     
     e.preventDefault();
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+
+    // Update modal action buttons href based on language
+    const currentLang = typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'es';
+    const targetDocUrl = currentLang === 'en' ? 'theorem-prover-en.html' : 'theorem-prover.html';
+    
+    modal.querySelectorAll('a[href*="theorem-prover"]').forEach(link => {
+      link.href = targetDocUrl;
+    });
   };
 
   const closeModal = () => {
@@ -294,4 +349,3 @@ function initDocModal() {
     }
   });
 }
-

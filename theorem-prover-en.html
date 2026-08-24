@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentación Técnica | Demostrador Automático de Teoremas (ATP)</title>
+  <title>Technical Documentation | Automated Theorem Prover (ATP)</title>
   <meta name="description"
-    content="Documentación técnica y arquitectura general del Demostrador Automático de Teoremas para Lógica Proposicional desarrollado en Java con AST binario, FNC y Método de Resolución de Robinson." />
+    content="Technical documentation and general architecture of the Automated Theorem Prover for Propositional Logic developed in Java using binary AST, CNF normalization, and Robinson's Resolution Method." />
   <meta name="author" content="Uriel Méndez Romero" />
 
   <!-- Favicon -->
@@ -27,7 +27,7 @@
 
 <body>
 
-  <!-- NAVEGACIÓN / HEADER -->
+  <!-- NAVIGATION / HEADER -->
   <header class="header" id="header">
     <div class="container">
       <a href="index.html" class="logo">
@@ -36,31 +36,31 @@
 
       <nav>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="index.html#hero" class="nav-link">Inicio</a></li>
-          <li><a href="index.html#proyectos" class="nav-link active">Proyectos</a></li>
+          <li><a href="index.html#hero" class="nav-link">Home</a></li>
+          <li><a href="index.html#proyectos" class="nav-link active">Projects</a></li>
           <li><a href="https://github.com/urielmndzr/AutomatedTheoremProver" target="_blank" rel="noopener"
-              class="nav-link">Repositorio GitHub ↗</a></li>
+              class="nav-link">GitHub Repo ↗</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="theorem-prover-en.html" class="lang-toggle" style="text-decoration: none;" aria-label="Switch to English">
+        <a href="theorem-prover.html" class="lang-toggle" style="text-decoration: none;" aria-label="Cambiar a Español">
           <svg class="globe-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="2" y1="12" x2="22" y2="12"></line>
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
           </svg>
-          <span class="lang-opt lang-opt-es active">ES</span>
+          <span class="lang-opt lang-opt-es">ES</span>
           <span class="lang-sep">|</span>
-          <span class="lang-opt lang-opt-en">EN</span>
+          <span class="lang-opt lang-opt-en active">EN</span>
         </a>
 
-        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
-          <!-- Icono Luna (tema claro) -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <!-- Moon Icon (light theme) -->
           <svg class="moon-icon" viewBox="0 0 24 24">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
-          <!-- Icono Sol (tema oscuro) -->
+          <!-- Sun Icon (dark theme) -->
           <svg class="sun-icon" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -75,24 +75,24 @@
         </button>
 
         <a href="index.html#proyectos" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.88rem;">
-          ← Volver
+          ← Back
         </a>
       </div>
     </div>
   </header>
 
-  <!-- CONTENIDO DE DOCUMENTACIÓN -->
+  <!-- DOCUMENTATION CONTENT -->
   <main class="container doc-container" style="padding-top: calc(var(--header-height) + 1.5rem);">
     <div class="doc-layout">
 
-      <!-- SIDEBAR DE NAVEGACIÓN -->
+      <!-- NAVIGATION SIDEBAR -->
       <aside class="doc-sidebar glass-card">
         <div class="doc-sidebar-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
           </svg>
-          Índice de Contenidos
+          Table of Contents
         </div>
 
         <ul class="doc-nav-list">
@@ -103,7 +103,7 @@
                 <line x1="12" y1="16" x2="12" y2="12"></line>
                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
               </svg>
-              1. Visión General
+              1. Overview
             </a>
           </li>
           <li>
@@ -113,7 +113,7 @@
                 <line x1="8" y1="21" x2="16" y2="21"></line>
                 <line x1="12" y1="17" x2="12" y2="21"></line>
               </svg>
-              2. Arquitectura
+              2. Architecture
             </a>
           </li>
           <li>
@@ -121,7 +121,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
               </svg>
-              3. Árbol de Sintaxis (AST)
+              3. Syntax Tree (AST)
             </a>
           </li>
           <li>
@@ -131,7 +131,7 @@
                 <polyline points="2 17 12 22 22 17"></polyline>
                 <polyline points="2 12 12 22 22 12"></polyline>
               </svg>
-              4. Normalización a FNC
+              4. CNF Normalization
             </a>
           </li>
           <li>
@@ -140,7 +140,7 @@
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
-              5. Resolución Robinson
+              5. Robinson Resolution
             </a>
           </li>
           <li>
@@ -150,7 +150,7 @@
                 <line x1="3" y1="9" x2="21" y2="9"></line>
                 <line x1="9" y1="21" x2="9" y2="9"></line>
               </svg>
-              6. Operadores Lógicos
+              6. Logical Operators
             </a>
           </li>
           <li>
@@ -158,26 +158,26 @@
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
-              7. Ejemplo Paso a Paso
+              7. Step-by-Step Example
             </a>
           </li>
         </ul>
       </aside>
 
-      <!-- ÁREA DE CONTENIDO DOCS -->
+      <!-- DOCS CONTENT AREA -->
       <article class="doc-content">
 
         <!-- HEADER BANNER -->
         <header class="doc-header-banner">
           <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">
-            Demostrador Automático de Teoremas <span class="gradient-text">(ATP)</span>
+            Automated Theorem Prover <span class="gradient-text">(ATP)</span>
           </h1>
           <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 850px;">
-            Motor de <strong>Computación Simbólica e Inteligencia Artificial Deductiva</strong> en Lógica Proposicional. Diseñado para maximizar la eficiencia mediante manipulaciones sintácticas en Árboles de Sintaxis Abstracta (AST) y ofrecer trazabilidad transparente desglosando paso a paso cada regla de reescritura FNC y refutación por el Método de Resolución de Robinson.
+            Symbolic Computation and Deductive Artificial Intelligence engine in Propositional Logic. Designed to maximize performance via syntactic manipulations on Binary Abstract Syntax Trees (AST) while delivering transparent step-by-step auditing for every CNF rewrite rule and Robinson's Resolution refutation.
           </p>
         </header>
 
-        <!-- SECCIÓN 1: INTRODUCCIÓN Y VISIÓN GENERAL -->
+        <!-- SECTION 1: OVERVIEW -->
         <section id="introduccion" class="doc-section glass-card">
           <h2 class="doc-section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -185,14 +185,10 @@
               <line x1="12" y1="16" x2="12" y2="12"></line>
               <line x1="12" y1="8" x2="12.01" y2="8"></line>
             </svg>
-            1. Visión General
+            1. Overview
           </h2>
           <p class="doc-text">
-            El <strong>Demostrador Automático de Teoremas (Automated Theorem Prover - ATP)</strong> es un motor de
-            computación simbólica que automatiza la validación de argumentos formales en Lógica Proposicional. Dado un
-            conjunto de premisas <span class="symbol-badge"><i>P</i><sub>1</sub>, <i>P</i><sub>2</sub>, ...,
-              <i>P</i><sub>n</sub></span> y una conclusión <span class="symbol-badge"><i>C</i></span>, el sistema
-            determina si el argumento constituye una <strong>deducción válida</strong>.
+            The <strong>Automated Theorem Prover (ATP)</strong> is a symbolic computation engine that automates formal argument validation in Propositional Logic. Given a set of premises <span class="symbol-badge"><i>P</i><sub>1</sub>, <i>P</i><sub>2</sub>, ..., <i>P</i><sub>n</sub></span> and a conclusion <span class="symbol-badge"><i>C</i></span>, the system proves whether the argument forms a <strong>valid deduction</strong>.
           </p>
 
           <div class="doc-grid-2">
@@ -202,16 +198,12 @@
                   <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                 </svg>
               </div>
-              <h3 class="doc-subtitle" style="margin-top: 0;">Eficiencia con Árboles Binarios (AST)</h3>
+              <h3 class="doc-subtitle" style="margin-top: 0;">Efficiency with Binary Syntax Trees (AST)</h3>
               <p class="doc-text" style="font-size: 0.92rem; margin-bottom: 0.5rem;">
-                Las <strong>Tablas de Verdad</strong> tradicionales colapsan computacionalmente al requerir
-                2<sup><i>N</i></sup> evaluaciones combinatorias. Con solo 20 variables, demandarían más de
-                <strong>1,048,576 filas</strong>.
+                Traditional <strong>Truth Tables</strong> suffer from exponential combinatorial blowup, requiring 2<sup><i>N</i></sup> evaluations. With just 20 variables, they demand over <strong>1,048,576 rows</strong>.
               </p>
               <p class="doc-text" style="font-size: 0.92rem; margin-bottom: 0;">
-                Este sistema utiliza <strong>Árboles de Sintaxis Abstracta (AST) binarios</strong> que sustituyen la
-                evaluación exhaustiva por transformaciones simbólicas directas en memoria, logrando una ejecución ágil y
-                de mínimo consumo de recursos.
+                This system employs <strong>Binary Abstract Syntax Trees (AST)</strong> to replace exhaustive evaluations with direct symbolic transformations in memory, achieving high speed with minimal resource consumption.
               </p>
             </div>
 
@@ -222,20 +214,18 @@
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
               </div>
-              <h3 class="doc-subtitle" style="margin-top: 0;">Transparencia y Trazabilidad Paso a Paso</h3>
+              <h3 class="doc-subtitle" style="margin-top: 0;">Step-by-Step Transparency & Auditing</h3>
               <p class="doc-text" style="font-size: 0.92rem; margin-bottom: 0.5rem;">
-                A diferencia de los solucionadores tipo "caja negra" que únicamente devuelven un valor booleano, este
-                demostrador audita e imprime el proceso de deducción completo.
+                Unlike "black-box" solvers that only return a boolean value, this prover audits and prints the complete deductive proof trace.
               </p>
               <p class="doc-text" style="font-size: 0.92rem; margin-bottom: 0;">
-                Muestra la expresión tras aplicar la Reducción al Absurdo, cada equivalencia durante la conversión a
-                Forma Normal Conjuntiva (FNC) y cada literal resolvente seleccionado hasta la prueba por refutación.
+                It displays the expression after Proof by Contradiction, every equivalence during Conjunctive Normal Form (CNF) conversion, and each selected resolvent literal until refutation.
               </p>
             </div>
           </div>
         </section>
 
-        <!-- SECCIÓN 2: ARQUITECTURA Y PIPELINE -->
+        <!-- SECTION 2: ARCHITECTURE -->
         <section id="arquitectura" class="doc-section glass-card">
           <h2 class="doc-section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -243,19 +233,18 @@
               <line x1="8" y1="21" x2="16" y2="21"></line>
               <line x1="12" y1="17" x2="12" y2="21"></line>
             </svg>
-            2. Arquitectura
+            2. Architecture
           </h2>
           <p class="doc-text">
-            El sistema opera mediante un pipeline modular de transformación simbólica dividido en 5 etapas secuenciales:
+            The system operates through a modular 5-stage symbolic transformation pipeline:
           </p>
 
           <div class="pipeline-container">
             <div class="pipeline-step">
               <div class="pipeline-number">1</div>
               <div class="pipeline-info">
-                <h4>Parsing y Análisis Formal</h4>
-                <p>Lee la cadena textual de la fórmula lógica, reconociendo proposiciones atómicas, conectivos formales
-                  y jerarquía de operadores.</p>
+                <h4>Parsing & Formal Analysis</h4>
+                <p>Parses raw formula string, identifying atomic propositions, connectives, and operator precedence.</p>
               </div>
             </div>
             <div class="pipeline-connector"></div>
@@ -263,9 +252,8 @@
             <div class="pipeline-step">
               <div class="pipeline-number">2</div>
               <div class="pipeline-info">
-                <h4>Construcción del Árbol de Sintaxis Abstracta (AST)</h4>
-                <p>Genera una representación binaria en memoria donde cada nodo almacena un operador o literal
-                  manteniendo punteros de navegación a padre e hijos.</p>
+                <h4>Binary Abstract Syntax Tree (AST) Construction</h4>
+                <p>Generates an in-memory binary representation storing operators or literals with parent/child navigation pointers.</p>
               </div>
             </div>
             <div class="pipeline-connector"></div>
@@ -273,10 +261,8 @@
             <div class="pipeline-step">
               <div class="pipeline-number">3</div>
               <div class="pipeline-info">
-                <h4>Reducción al Absurdo (Planteamiento del Teorema)</h4>
-                <p>Niega la conclusión del argumento para verificar si el conjunto de premisas y la conclusión negada
-                  (<span class="symbol-badge"><i>P</i><sub>1</sub> &and; ... &and; <i>P</i><sub>n</sub> &and;
-                    &not;<i>C</i></span>) genera una contradicción.</p>
+                <h4>Proof by Contradiction (Reductio ad Absurdum)</h4>
+                <p>Negates the conclusion to check whether premises plus negated conclusion (<span class="symbol-badge"><i>P</i><sub>1</sub> &and; ... &and; <i>P</i><sub>n</sub> &and; &not;<i>C</i></span>) yield a contradiction.</p>
               </div>
             </div>
             <div class="pipeline-connector"></div>
@@ -284,9 +270,8 @@
             <div class="pipeline-step">
               <div class="pipeline-number">4</div>
               <div class="pipeline-info">
-                <h4>Normalización a Forma Normal Conjuntiva (FNC)</h4>
-                <p>Aplica un ciclo iterativo de equivalencias lógicas (eliminación de condicionales, De Morgan,
-                  distributividad) para transformar el árbol en conjunciones de cláusulas disyuntivas.</p>
+                <h4>Conjunctive Normal Form (CNF) Normalization</h4>
+                <p>Applies iterative symbolic equivalences (eliminating conditionals, De Morgan, distribution) to transform the AST into conjunctions of disjunctive clauses.</p>
               </div>
             </div>
             <div class="pipeline-connector"></div>
@@ -294,49 +279,43 @@
             <div class="pipeline-step">
               <div class="pipeline-number">5</div>
               <div class="pipeline-info">
-                <h4>Motor de Demostración (Método de Resolución de Robinson)</h4>
-                <p>Extrae las cláusulas y aplica el Método de Resolución de Robinson buscando derivar la cláusula vacía
-                  (<span class="symbol-badge">&#9633;</span>), certificando la validez absoluta del teorema.</p>
+                <h4>Prover Engine (Robinson's Resolution Method)</h4>
+                <p>Extracts clauses and executes Robinson's Resolution to derive the empty clause (<span class="symbol-badge">&#9633;</span>), certifying absolute theorem validity.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- SECCIÓN 3: ÁRBOLES DE SINTAXIS ABSTRACTA (AST) -->
+        <!-- SECTION 3: ABSTRACT SYNTAX TREES (AST) -->
         <section id="arbol-sintaxis" class="doc-section glass-card">
           <h2 class="doc-section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
             </svg>
-            3. Árbol de Sintaxis (AST)
+            3. Syntax Tree (AST)
           </h2>
           <p class="doc-text">
-            El corazón de la eficiencia del demostrador reside en la estructura de <strong>Árbol Binario de
-              Sintaxis</strong>:
+            At the core of the engine's speed is the <strong>Binary Abstract Syntax Tree</strong> data structure:
           </p>
 
           <div class="doc-grid-2">
             <div class="doc-feature-card">
-              <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Nodos Bidireccionales</h4>
+              <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Bidirectional Nodes</h4>
               <p class="doc-text" style="font-size: 0.9rem;">
-                Cada elemento se almacena como un nodo con punteros a <code>izquierdo</code>, <code>derecho</code> y
-                <code>padre</code>. Esto permite realizar rotaciones, sustituciones locales de subárboles y propagación
-                de negaciones sin necesidad de reescribir cadenas de texto.
+                Each node maintains pointers to <code>left</code>, <code>right</code>, and <code>parent</code>. This enables in-place subtree rotations, local substitutions, and negation propagation without costly string re-parsing.
               </p>
             </div>
 
             <div class="doc-feature-card">
-              <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Recorrido e Inspección In-Order</h4>
+              <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">In-Order Inspection & Traversal</h4>
               <p class="doc-text" style="font-size: 0.9rem;">
-                El algoritmo recorre el árbol de manera simétrica (izquierdo &rarr; raíz &rarr; derecho) en cada
-                iteración de transformación. Esto garantiza la generación transparente de la expresión intermedia para
-                su auditoría visual.
+                Symmetric traversal (left &rarr; root &rarr; right) prints intermediate expressions at every transformation step for step-by-step visual auditing.
               </p>
             </div>
           </div>
         </section>
 
-        <!-- SECCIÓN 4: NORMALIZACIÓN A FNC -->
+        <!-- SECTION 4: CNF NORMALIZATION -->
         <section id="normalizacion-fnc" class="doc-section glass-card">
           <h2 class="doc-section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -344,93 +323,77 @@
               <polyline points="2 17 12 22 22 17"></polyline>
               <polyline points="2 12 12 22 22 12"></polyline>
             </svg>
-            4. Normalización a FNC
+            4. CNF Normalization
           </h2>
           <p class="doc-text">
-            Para hacer posible la demostración por resolución, el demostrador convierte cualquier fórmula proposicional
-            a su <strong>Forma Normal Conjuntiva (FNC)</strong> aplicando las siguientes equivalencias simbólicas:
+            To enable resolution proof, any propositional formula is converted into <strong>Conjunctive Normal Form (CNF)</strong> applying the following symbolic equivalences:
           </p>
 
           <div class="doc-table-wrapper">
             <table class="doc-table">
               <thead>
                 <tr>
-                  <th>Etapa de Conversión</th>
-                  <th>Equivalencia Lógica Aplicada</th>
-                  <th>Efecto en la Estructura</th>
+                  <th>Conversion Stage</th>
+                  <th>Applied Logical Equivalence</th>
+                  <th>Structural Impact</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>1. Eliminación de Bicondicionales</strong></td>
-                  <td><code
-                      class="symbol-badge"><i>A</i> &hArr; <i>B</i> &equiv; (<i>A</i> &rArr; <i>B</i>) &and; (<i>B</i> &rArr; <i>A</i>)</code>
-                  </td>
-                  <td>Descompone equivalencias en dos condicionales enlazados por una conjunción.</td>
+                  <td><strong>1. Biconditional Elimination</strong></td>
+                  <td><code class="symbol-badge"><i>A</i> &hArr; <i>B</i> &equiv; (<i>A</i> &rArr; <i>B</i>) &and; (<i>B</i> &rArr; <i>A</i>)</code></td>
+                  <td>Splits equivalences into two implications joined by conjunction.</td>
                 </tr>
                 <tr>
-                  <td><strong>2. Eliminación de Condicionales</strong></td>
-                  <td><code class="symbol-badge"><i>A</i> &rArr; <i>B</i> &equiv; &not;<i>A</i> &or; <i>B</i></code>
-                  </td>
-                  <td>Transforma las implicaciones en disyunciones con el antecedente negado.</td>
+                  <td><strong>2. Conditional Elimination</strong></td>
+                  <td><code class="symbol-badge"><i>A</i> &rArr; <i>B</i> &equiv; &not;<i>A</i> &or; <i>B</i></code></td>
+                  <td>Transforms implications into disjunctions with negated antecedent.</td>
                 </tr>
                 <tr>
-                  <td><strong>3. Leyes de De Morgan</strong></td>
-                  <td><code
-                      class="symbol-badge">&not;(<i>A</i> &and; <i>B</i>) &equiv; &not;<i>A</i> &or; &not;<i>B</i></code><br /><code
-                      class="symbol-badge">&not;(<i>A</i> &or; <i>B</i>) &equiv; &not;<i>A</i> &and; &not;<i>B</i></code>
-                  </td>
-                  <td>Empuja las negaciones hacia los nodos hoja (variables átomo).</td>
+                  <td><strong>3. De Morgan's Laws</strong></td>
+                  <td><code class="symbol-badge">&not;(<i>A</i> &and; <i>B</i>) &equiv; &not;<i>A</i> &or; &not;<i>B</i></code><br /><code class="symbol-badge">&not;(<i>A</i> &or; <i>B</i>) &equiv; &not;<i>A</i> &and; &not;<i>B</i></code></td>
+                  <td>Pushes negations down to leaf nodes (atomic variables).</td>
                 </tr>
                 <tr>
-                  <td><strong>4. Doble Negación</strong></td>
+                  <td><strong>4. Double Negation</strong></td>
                   <td><code class="symbol-badge">&not;&not;<i>A</i> &equiv; <i>A</i></code></td>
-                  <td>Simplifica y cancela pares de negaciones consecutivas.</td>
+                  <td>Cancels double negation pairs.</td>
                 </tr>
                 <tr>
-                  <td><strong>5. Distribución de Disyunciones</strong></td>
-                  <td><code
-                      class="symbol-badge"><i>A</i> &or; (<i>B</i> &and; <i>C</i>) &equiv; (<i>A</i> &or; <i>B</i>) &and; (<i>A</i> &or; <i>C</i>)</code>
-                  </td>
-                  <td>Aplica distributividad para garantizar la forma clausular final.</td>
+                  <td><strong>5. Disjunction Distribution</strong></td>
+                  <td><code class="symbol-badge"><i>A</i> &or; (<i>B</i> &and; <i>C</i>) &equiv; (<i>A</i> &or; <i>B</i>) &and; (<i>A</i> &or; <i>C</i>)</code></td>
+                  <td>Applies distribution to guarantee final conjunctive clause structure.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        <!-- SECCIÓN 5: MOTOR DE RESOLUCIÓN ATP -->
+        <!-- SECTION 5: ROBINSON RESOLUTION ENGINE -->
         <section id="resolucion-atp" class="doc-section glass-card">
           <h2 class="doc-section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
               <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
-            5. Resolución Robinson
+            5. Robinson Resolution
           </h2>
           <p class="doc-text">
-            Una vez obtenida la FNC, la expresión se convierte en un conjunto de cláusulas <span
-              class="symbol-badge"><i>S</i> = {<i>C</i><sub>1</sub>, <i>C</i><sub>2</sub>, ...,
-              <i>C</i><sub>m</sub>}</span>. El motor ejecuta el <strong>Método de Resolución de Robinson</strong> para
-            refutar el conjunto negado:
+            Once CNF is achieved, the expression becomes a clause set <span class="symbol-badge"><i>S</i> = {<i>C</i><sub>1</sub>, <i>C</i><sub>2</sub>, ..., <i>C</i><sub>m</sub>}</span>. The engine executes <strong>Robinson's Resolution Method</strong> to refute the negated set:
           </p>
 
           <div class="doc-callout info">
             <div class="doc-callout-icon">💡</div>
             <div class="doc-callout-content">
-              <h4 style="margin-bottom: 0.3rem; color: var(--accent-primary);">Método de Resolución de Robinson</h4>
+              <h4 style="margin-bottom: 0.3rem; color: var(--accent-primary);">Robinson's Resolution Method</h4>
               <p>
-                Dadas dos cláusulas con literales opuestos <span class="symbol-badge"><i>C</i><sub>1</sub> = <i>L</i>
-                  &or; <i>A</i></span> y <span class="symbol-badge"><i>C</i><sub>2</sub> = &not;<i>L</i> &or;
-                  <i>B</i></span>, el sistema deduce el resolvente <span class="symbol-badge"><i>R</i> = <i>A</i> &or;
-                  <i>B</i></span>. La reducción iterativa busca derivar la <strong>cláusula vacía (&#9633;)</strong>,
-                probando que el conjunto negado es insatisfacible y por tanto el teorema es <strong>VÁLIDO</strong>.
+                Given two clauses with complementary literals <span class="symbol-badge"><i>C</i><sub>1</sub> = <i>L</i> &or; <i>A</i></span> and <span class="symbol-badge"><i>C</i><sub>2</sub> = &not;<i>L</i> &or; <i>B</i></span>, the system derives the resolvent <span class="symbol-badge"><i>R</i> = <i>A</i> &or; <i>B</i></span>. Iterative resolution aims to derive the <strong>empty clause (&#9633;)</strong>, proving the negated set unsatisfiable and certifying the theorem <strong>VALID</strong>.
               </p>
             </div>
           </div>
         </section>
 
-        <!-- SECCIÓN 6: OPERADORES Y SINTAXIS -->
+        <!-- SECTION 6: LOGICAL OPERATORS & SYNTAX -->
         <section id="sintaxis-operadores" class="doc-section glass-card">
           <h2 class="doc-section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -438,52 +401,50 @@
               <line x1="3" y1="9" x2="21" y2="9"></line>
               <line x1="9" y1="21" x2="9" y2="9"></line>
             </svg>
-            6. Operadores Lógicos
+            6. Logical Operators
           </h2>
           <p class="doc-text">
-            Resumen general de los conectivos lógicos reconocidos por el demostrador:
+            Supported logical connectives recognized by the theorem prover:
           </p>
 
           <div class="doc-table-wrapper">
             <table class="doc-table">
               <thead>
                 <tr>
-                  <th>Operación Lógica</th>
-                  <th>Símbolos Aceptados</th>
-                  <th>Ejemplo de Expresión</th>
+                  <th>Logical Operation</th>
+                  <th>Accepted Symbols</th>
+                  <th>Expression Example</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Negación</strong></td>
-                  <td><span class="symbol-badge">¬</span> <span class="symbol-badge">~</span> <span
-                      class="symbol-badge">!</span></td>
-                  <td><code>¬P</code>, <code>~P</code> o <code>!P</code></td>
+                  <td><strong>Negation (NOT)</strong></td>
+                  <td><span class="symbol-badge">¬</span> <span class="symbol-badge">~</span> <span class="symbol-badge">!</span></td>
+                  <td><code>¬P</code>, <code>~P</code> or <code>!P</code></td>
                 </tr>
                 <tr>
-                  <td><strong>Conjunción (Y)</strong></td>
+                  <td><strong>Conjunction (AND)</strong></td>
                   <td><span class="symbol-badge">&amp;</span></td>
                   <td><code>P &amp; Q</code></td>
                 </tr>
                 <tr>
-                  <td><strong>Disyunción (O)</strong></td>
+                  <td><strong>Disjunction (OR)</strong></td>
                   <td><span class="symbol-badge">|</span></td>
                   <td><code>P | Q</code></td>
                 </tr>
                 <tr>
-                  <td><strong>Condicional (Implicación)</strong></td>
+                  <td><strong>Conditional (Implication)</strong></td>
                   <td><span class="symbol-badge">&gt;</span></td>
                   <td><code>P &gt; Q</code></td>
                 </tr>
                 <tr>
-                  <td><strong>Bicondicional (Equivalencia)</strong></td>
+                  <td><strong>Biconditional (Equivalence)</strong></td>
                   <td><span class="symbol-badge">=</span></td>
                   <td><code>P = Q</code></td>
                 </tr>
                 <tr>
-                  <td><strong>Agrupaciones</strong></td>
-                  <td><span class="symbol-badge">()</span> <span class="symbol-badge">[]</span> <span
-                      class="symbol-badge">{}</span></td>
+                  <td><strong>Parentheses / Grouping</strong></td>
+                  <td><span class="symbol-badge">()</span> <span class="symbol-badge">[]</span> <span class="symbol-badge">{}</span></td>
                   <td><code>((P &gt; Q) &amp; P) &gt; Q</code></td>
                 </tr>
               </tbody>
@@ -491,21 +452,20 @@
           </div>
         </section>
 
-        <!-- SECCIÓN 7: EJEMPLO DE DEMOSTRACIÓN -->
+        <!-- SECTION 7: STEP-BY-STEP EXAMPLES -->
         <section id="ejemplo-demostracion" class="doc-section glass-card">
           <h2 class="doc-section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
-            7. Ejemplo Paso a Paso
+            7. Step-by-Step Example
           </h2>
           <p class="doc-text">
-            Muestra de la ejecución real del sistema resolviendo el teorema formal de Silogismo Hipotético:
+            Real system execution trace proving the formal Hypothetical Syllogism theorem:
           </p>
 
           <div style="text-align: center; margin: 1.25rem 0;">
-            <code class="symbol-badge"
-              style="font-size: 1.15rem; padding: 0.6rem 1.4rem;">((<i>P</i> &rArr; <i>Q</i>) &and; (<i>Q</i> &rArr; <i>R</i>) &and; <i>P</i>) &rArr; <i>R</i></code>
+            <code class="symbol-badge" style="font-size: 1.15rem; padding: 0.6rem 1.4rem;">((<i>P</i> &rArr; <i>Q</i>) &and; (<i>Q</i> &rArr; <i>R</i>) &and; <i>P</i>) &rArr; <i>R</i></code>
           </div>
 
           <div class="code-block-container">
@@ -515,64 +475,62 @@
                 <span class="code-dot yellow"></span>
                 <span class="code-dot green"></span>
               </div>
-              <span>Traza de Ejecución Transparente en Consola (Salida del Demostrador)</span>
+              <span>Transparent Prover Console Trace (Engine Output)</span>
             </div>
             <pre class="code-body"><code>================================================================================
-                   DEMOSTRADOR AUTOMÁTICO DE TEOREMAS                           
+                   AUTOMATED THEOREM PROVER (ATP ENGINE)                        
 ================================================================================
-[FASE 1: Análisis Sintáctico y Construcción del AST]
-  Fórmula leída: (((P > Q) & (Q > R) & P) > R)
+[PHASE 1: Syntactic Parsing & AST Construction]
+  Input formula: (((P > Q) & (Q > R) & P) > R)
 
-[FASE 2: Reducción al Absurdo]
-  Regla aplicada:     Negación del teorema para prueba por refutación
-  Antes (Teorema):    (((P > Q) & (Q > R) & P) > R)
-  Después (Absurdo):  (((P > Q) & (Q > R) & P) & ¬R)
+[PHASE 2: Proof by Contradiction]
+  Applied rule:       Negating conclusion for refutation proof
+  Before (Theorem):   (((P > Q) & (Q > R) & P) > R)
+  After (Absurdum):   (((P > Q) & (Q > R) & P) & ¬R)
 
-[FASE 3: Transformación a Forma Normal Conjuntiva (FNC)]
-  [Paso 1 - FNC]: Eliminación de Condicionales (A > B => ¬A | B)
-    Antes (Subfórmula):   (P > Q)
-    Después (Subfórmula): (¬P | Q)
-    Fórmula actual:       (((¬P | Q) & (Q > R) & P) & ¬R)
+[PHASE 3: Transformation to Conjunctive Normal Form (CNF)]
+  [Step 1 - CNF]: Conditional Elimination (A > B => ¬A | B)
+    Before (Subformula): (P > Q)
+    After (Subformula):  (¬P | Q)
+    Current formula:     (((¬P | Q) & (Q > R) & P) & ¬R)
 
-  [Paso 2 - FNC]: Eliminación de Condicionales (A > B => ¬A | B)
-    Antes (Subfórmula):   (Q > R)
-    Después (Subfórmula): (¬Q | R)
-    Fórmula actual:       (((¬P | Q) & (¬Q | R) & P) & ¬R)
+  [Step 2 - CNF]: Conditional Elimination (A > B => ¬A | B)
+    Before (Subformula): (Q > R)
+    After (Subformula):  (¬Q | R)
+    Current formula:     (((¬P | Q) & (¬Q | R) & P) & ¬R)
 
-  Fórmula final en FNC: ((¬P | Q) & (¬Q | R) & P & ¬R)
+  Final formula in CNF: ((¬P | Q) & (¬Q | R) & P & ¬R)
 
-[FASE 4: Extracción de Cláusulas y Resolución]
-  Cláusulas iniciales extraídas: [[¬P, Q], [¬Q, R], [P], [¬R]]
+[PHASE 4: Clause Extraction & Resolution]
+  Extracted clauses: [[¬P, Q], [¬Q, R], [P], [¬R]]
 
-  --- PASO 1 [Resolución Unitaria] ---
-    Literal unitario seleccionado: P   ==> Cláusulas restantes: [[Q], [¬Q, R], [¬R]]
+  --- STEP 1 [Unit Resolution] ---
+    Selected unit literal: P   ==> Remaining clauses: [[Q], [¬Q, R], [¬R]]
 
-  --- PASO 2 [Resolución Unitaria] ---
-    Literal unitario seleccionado: Q   ==> Cláusulas restantes: [[R], [¬R]]
+  --- STEP 2 [Unit Resolution] ---
+    Selected unit literal: Q   ==> Remaining clauses: [[R], [¬R]]
 
-  --- PASO 3 [Resolución Unitaria] ---
-    Literal unitario seleccionado: R   ==> Cláusulas resultantes: [] + [[]]
+  --- STEP 3 [Unit Resolution] ---
+    Selected unit literal: R   ==> Resulting clauses: [] + [[]]
 
-  --> ¡CONTRADICCIÓN ENCONTRADA! (Derivada cláusula vacía [])
-  --> RESULTADO: El teorema es VÁLIDO.</code></pre>
+  --> CONTRADICTION FOUND! (Empty clause [] derived)
+  --> RESULT: Theorem is VALID.</code></pre>
           </div>
 
           <div class="doc-callout tip">
             <div class="doc-callout-icon">✅</div>
             <div class="doc-callout-content">
-              <h4 style="margin-bottom: 0.3rem; color: #10b981;">Validación Certificada</h4>
+              <h4 style="margin-bottom: 0.3rem; color: #10b981;">Certified Validation</h4>
               <p>
-                Al derivar la cláusula vacía en el paso 3 mediante sustitución de literales complementarios, el
-                demostrador certifica formalmente que la negación del teorema genera una contradicción insatisfacible,
-                acreditando la absoluta validez del argumento formal.
+                By deriving the empty clause at step 3 via complementary literal cancellation, the prover formally certifies that the theorem's negation yields an unsatisfiable contradiction, proving the absolute validity of the formal argument.
               </p>
             </div>
           </div>
 
-          <!-- EJEMPLO 2: DE MORGAN ANIDADO, DOBLE NEGACIÓN Y DISTRIBUTIVA -->
-          <h3 class="doc-subtitle" style="margin-top: 2.5rem;">Ejemplo 2: Leyes de De Morgan Anidadas, Doble Negación y Ley Distributiva</h3>
+          <!-- EXAMPLE 2: NESTED DE MORGAN, DOUBLE NEGATION & DISTRIBUTION -->
+          <h3 class="doc-subtitle" style="margin-top: 2.5rem;">Example 2: Nested De Morgan's Laws, Double Negation & Distributive Law</h3>
           <p class="doc-text">
-            Este ejemplo muestra cómo el motor aplica múltiples leyes encadenadas: De Morgan anidado (<span class="symbol-badge">&not;(<i>A</i> &or; <i>B</i>)</span> y <span class="symbol-badge">&not;(<i>A</i> &and; <i>B</i>)</span>), Doble Negación (<span class="symbol-badge">&not;&not;<i>A</i> &rArr; <i>A</i></span>) y la Ley Distributiva (<span class="symbol-badge"><i>P</i> &or; (<i>Q</i> &and; <i>R</i>) &rArr; (<i>P</i> &or; <i>Q</i>) &and; (<i>P</i> &or; <i>R</i>)</span>):
+            This example demonstrates chained symbolic rules: nested De Morgan (<span class="symbol-badge">&not;(<i>A</i> &or; <i>B</i>)</span> and <span class="symbol-badge">&not;(<i>A</i> &and; <i>B</i>)</span>), Double Negation (<span class="symbol-badge">&not;&not;<i>A</i> &rArr; <i>A</i></span>), and Distribution (<span class="symbol-badge"><i>P</i> &or; (<i>Q</i> &and; <i>R</i>) &rArr; (<i>P</i> &or; <i>Q</i>) &and; (<i>P</i> &or; <i>R</i>)</span>):
           </p>
 
           <div style="text-align: center; margin: 1.25rem 0;">
@@ -586,79 +544,79 @@
                 <span class="code-dot yellow"></span>
                 <span class="code-dot green"></span>
               </div>
-              <span>Traza Completa de Ejecución en Consola (Demostrador Automático)</span>
+              <span>Full Console Trace Log (Automated Prover)</span>
             </div>
             <pre class="code-body"><code>================================================================================
-                   DEMOSTRADOR AUTOMÁTICO DE TEOREMAS                           
+                   AUTOMATED THEOREM PROVER (ATP ENGINE)                        
 ================================================================================
-[FASE 1: Análisis Sintáctico y Construcción del AST]
-  Fórmula leída: (¬((P | (Q & R))) > (¬P & (¬Q | ¬R)))
+[PHASE 1: Syntactic Parsing & AST Construction]
+  Input formula: (¬((P | (Q & R))) > (¬P & (¬Q | ¬R)))
 
-[FASE 2: Reducción al Absurdo]
-  Regla aplicada:     Negación del teorema para prueba por refutación
-  Antes (Teorema):    (¬((P | (Q & R))) > (¬P & (¬Q | ¬R)))
-  Después (Absurdo):  (¬((P | (Q & R))) & ¬((¬P & (¬Q | ¬R))))
+[PHASE 2: Proof by Contradiction]
+  Applied rule:       Negating conclusion for refutation proof
+  Before (Theorem):   (¬((P | (Q & R))) > (¬P & (¬Q | ¬R)))
+  After (Absurdum):   (¬((P | (Q & R))) & ¬((¬P & (¬Q | ¬R))))
 
-[FASE 3: Transformación a Forma Normal Conjuntiva (FNC)]
-  [Paso 1 - FNC]: Ley de De Morgan (¬(A | B) => ¬A & ¬B)
-    Antes (Subfórmula):   ¬((P | (Q & R)))
-    Después (Subfórmula): (¬P & ¬((Q & R)))
-    Fórmula actual:       ((¬P & ¬((Q & R))) & ¬((¬P & (¬Q | ¬R))))
+[PHASE 3: Transformation to Conjunctive Normal Form (CNF)]
+  [Step 1 - CNF]: De Morgan's Law (¬(A | B) => ¬A & ¬B)
+    Before (Subformula): ¬((P | (Q & R)))
+    After (Subformula):  (¬P & ¬((Q & R)))
+    Current formula:     ((¬P & ¬((Q & R))) & ¬((¬P & (¬Q | ¬R))))
 
-  [Paso 2 - FNC]: Ley de De Morgan (¬(A & B) => ¬A | ¬B)
-    Antes (Subfórmula):   ¬((Q & R))
-    Después (Subfórmula): (¬Q | ¬R)
-    Fórmula actual:       ((¬P & (¬Q | ¬R)) & ¬((¬P & (¬Q | ¬R))))
+  [Step 2 - CNF]: De Morgan's Law (¬(A & B) => ¬A | ¬B)
+    Before (Subformula): ¬((Q & R))
+    After (Subformula):  (¬Q | ¬R)
+    Current formula:     ((¬P & (¬Q | ¬R)) & ¬((¬P & (¬Q | ¬R))))
 
-  [Paso 3 - FNC]: Ley de De Morgan (¬(A & B) => ¬A | ¬B)
-    Antes (Subfórmula):   ¬((¬P & (¬Q | ¬R)))
-    Después (Subfórmula): (¬P | ¬((¬Q | ¬R)))
-    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (¬P | ¬((¬Q | ¬R))))
+  [Step 3 - CNF]: De Morgan's Law (¬(A & B) => ¬A | ¬B)
+    Before (Subformula): ¬((¬P & (¬Q | ¬R)))
+    After (Subformula):  (¬P | ¬((¬Q | ¬R)))
+    Current formula:     ((¬P & (¬Q | ¬R)) & (¬P | ¬((¬Q | ¬R))))
 
-  [Paso 4 - FNC]: Ley de De Morgan (¬(A | B) => ¬A & ¬B)
-    Antes (Subfórmula):   ¬((¬Q | ¬R))
-    Después (Subfórmula): (¬Q & ¬R)
-    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (¬P | (¬Q & ¬R)))
+  [Step 4 - CNF]: De Morgan's Law (¬(A | B) => ¬A & ¬B)
+    Before (Subformula): ¬((¬Q | ¬R))
+    After (Subformula):  (¬Q & ¬R)
+    Current formula:     ((¬P & (¬Q | ¬R)) & (¬P | (¬Q & ¬R)))
 
-  [Paso 5 - FNC]: Eliminación de Doble Negación (¬¬A => A)
-    Antes (Subfórmula):   ¬¬R
-    Después (Subfórmula): ((¬P & (¬Q | ¬R)) & (¬P | (¬Q & R)))
-    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (¬P | (¬Q & R)))
+  [Step 5 - CNF]: Double Negation Elimination (¬¬A => A)
+    Before (Subformula): ¬¬R
+    After (Subformula):  ((¬P & (¬Q | ¬R)) & (¬P | (¬Q & R)))
+    Current formula:     ((¬P & (¬Q | ¬R)) & (¬P | (¬Q & R)))
 
-  [Paso 6 - FNC]: Eliminación de Doble Negación (¬¬A => A)
-    Antes (Subfórmula):   ¬¬P
-    Después (Subfórmula): ((¬P & (¬Q | ¬R)) & (P | (¬Q & R)))
-    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (P | (¬Q & R)))
+  [Step 6 - CNF]: Double Negation Elimination (¬¬A => A)
+    Before (Subformula): ¬¬P
+    After (Subformula):  ((¬P & (¬Q | ¬R)) & (P | (¬Q & R)))
+    Current formula:     ((¬P & (¬Q | ¬R)) & (P | (¬Q & R)))
 
-  [Paso 7 - FNC]: Eliminación de Doble Negación (¬¬A => A)
-    Antes (Subfórmula):   ¬¬Q
-    Después (Subfórmula): ((¬P & (¬Q | ¬R)) & (P | (Q & R)))
-    Fórmula actual:       ((¬P & (¬Q | ¬R)) & (P | (Q & R)))
+  [Step 7 - CNF]: Double Negation Elimination (¬¬A => A)
+    Before (Subformula): ¬¬Q
+    After (Subformula):  ((¬P & (¬Q | ¬R)) & (P | (Q & R)))
+    Current formula:     ((¬P & (¬Q | ¬R)) & (P | (Q & R)))
 
-  Fórmula final en FNC: ((¬P & (¬Q | ¬R)) & ((P | Q) & (P | R)))
+  Final formula in CNF: ((¬P & (¬Q | ¬R)) & ((P | Q) & (P | R)))
 
-[FASE 4: Extracción de Cláusulas y Resolución]
-  Cláusulas iniciales extraídas: [[¬P], [¬Q, ¬R], [P, Q], [P, R]]
+[PHASE 4: Clause Extraction & Resolution]
+  Extracted clauses: [[¬P], [¬Q, ¬R], [P, Q], [P, R]]
 
-  --- PASO 1 [Resolución Unitaria] ---
-    Literal unitario seleccionado: ¬P  ==> Cláusulas restantes: [[¬Q, ¬R], [Q], [R]]
+  --- STEP 1 [Unit Resolution] ---
+    Selected unit literal: ¬P  ==> Remaining clauses: [[¬Q, ¬R], [Q], [R]]
 
-  --- PASO 2 [Resolución Unitaria] ---
-    Literal unitario seleccionado: Q   ==> Cláusulas restantes: [[¬R], [R]]
+  --- STEP 2 [Unit Resolution] ---
+    Selected unit literal: Q   ==> Remaining clauses: [[¬R], [R]]
 
-  --- PASO 3 [Resolución Unitaria] ---
-    Literal unitario seleccionado: ¬R  ==> Cláusulas resultantes: [] + [[]]
+  --- STEP 3 [Unit Resolution] ---
+    Selected unit literal: ¬R  ==> Resulting clauses: [] + [[]]
 
-  --> ¡CONTRADICCIÓN ENCONTRADA! (Derivada cláusula vacía [])
-  --> RESULTADO: El teorema es VÁLIDO.</code></pre>
+  --> CONTRADICTION FOUND! (Empty clause [] derived)
+  --> RESULT: Theorem is VALID.</code></pre>
           </div>
 
           <div class="doc-callout info">
             <div class="doc-callout-icon">🔍</div>
             <div class="doc-callout-content">
-              <h4 style="margin-bottom: 0.3rem; color: var(--accent-primary);">Análisis del Desglose de Fases y Equivalencias</h4>
+              <h4 style="margin-bottom: 0.3rem; color: var(--accent-primary);">Phase Breakdown Analysis</h4>
               <p>
-                La traza completa muestra con total claridad el ciclo interno del demostrado: desde la construcción del AST en la Fase 1, la negación de la conclusión en la Fase 2, la aplicación secuencial de las 7 reglas de FNC (De Morgan, doble negación y distributiva) en la Fase 3, hasta la extracción de las 4 cláusulas y la resolución por refutación unitaria en la Fase 4.
+                The complete trace illustrates the engine's internal execution lifecycle: from AST construction in Phase 1, conclusion negation in Phase 2, sequential application of 7 CNF rules (De Morgan, double negation, distribution) in Phase 3, to clause extraction and unit refutation resolution in Phase 4.
               </p>
             </div>
           </div>
@@ -672,7 +630,7 @@
   <footer class="footer">
     <div class="container footer-container">
       <div style="font-size: 0.9rem; color: var(--text-secondary);">
-        © <span id="year">2026</span> Uriel Méndez Romero. Todos los derechos reservados.
+        © <span id="year">2026</span> Uriel Méndez Romero. All rights reserved.
       </div>
 
       <div class="footer-socials">
@@ -696,14 +654,14 @@
     </div>
   </footer>
 
-  <!-- Inline Script para activar el Conmutador de Tema y Navegación Sticky en la Documentación -->
+  <!-- Inline Script to activate Theme Toggle and Sidebar Sticky Scrollspy -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Año dinámico en footer
+      // Dynamic footer year
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-      // Tema Claro / Oscuro
+      // Light / Dark Theme
       const themeToggleBtn = document.getElementById('theme-toggle');
       const savedTheme = localStorage.getItem('theme') || 'light';
       document.documentElement.setAttribute('data-theme', savedTheme);
@@ -717,7 +675,7 @@
         });
       }
 
-      // Scroll Spy para Sidebar Links
+      // Scroll Spy for Sidebar Links
       const navLinks = document.querySelectorAll('.doc-nav-link');
       const docSections = document.querySelectorAll('.doc-section');
 

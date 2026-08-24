@@ -139,6 +139,57 @@
   display: none;
 }
 
+/* Language Toggle Button */
+.lang-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  height: 40px;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-full, 50px);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all var(--transition-fast);
+}
+
+.lang-toggle:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.25);
+  transform: translateY(-1px);
+}
+
+.lang-toggle svg.globe-icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent-primary);
+  margin-right: 0.1rem;
+}
+
+.lang-toggle .lang-opt {
+  color: var(--text-secondary);
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.lang-toggle .lang-opt.active {
+  color: var(--accent-primary);
+  opacity: 1;
+  font-weight: 800;
+}
+
+.lang-toggle .lang-sep {
+  opacity: 0.35;
+  font-weight: 400;
+  margin: 0 1px;
+}
+
 /* Mobile Toggle Hamburger */
 .mobile-toggle {
   display: none;
