@@ -61,6 +61,7 @@ function renderAllContent(lang = (typeof getCurrentLanguage === 'function' ? get
   renderTrajectory(lang);
   renderProjects(lang);
   renderSkills(lang);
+  renderCourses(lang);
   initScrollAnimations();
 }
 
@@ -200,28 +201,34 @@ function renderSkills(lang = 'es') {
 
   if (typeof skillsData === 'undefined') return;
 
-  const renderChips = (skills) => skills.map(skill => `
+  const currentSkills = skillsData[lang] || skillsData.es || skillsData;
+
+  const renderChips = (skills) => (skills || []).map(skill => `
     <span class="skill-chip">
       <span class="chip-dot"></span>
       ${skill}
     </span>
   `).join('');
 
-  if (programmingContainer && skillsData.programming) {
-    programmingContainer.innerHTML = renderChips(skillsData.programming);
+  if (programmingContainer) {
+    const list = currentSkills.programming || skillsData.programming || [];
+    programmingContainer.innerHTML = renderChips(list);
   }
-  if (erpContainer && skillsData.databasesAndErp) {
-    erpContainer.innerHTML = renderChips(skillsData.databasesAndErp);
+  if (erpContainer) {
+    const list = currentSkills.databasesAndErp || skillsData.databasesAndErp || [];
+    erpContainer.innerHTML = renderChips(list);
   }
-  if (biContainer && skillsData.biAndAnalytics) {
-    biContainer.innerHTML = renderChips(skillsData.biAndAnalytics);
+  if (biContainer) {
+    const list = currentSkills.biAndAnalytics || skillsData.biAndAnalytics || [];
+    biContainer.innerHTML = renderChips(list);
   }
-  if (devopsContainer && skillsData.toolsAndDevops) {
-    devopsContainer.innerHTML = renderChips(skillsData.toolsAndDevops);
+  if (devopsContainer) {
+    const list = currentSkills.toolsAndDevops || skillsData.toolsAndDevops || [];
+    devopsContainer.innerHTML = renderChips(list);
   }
 
   // Render soft skills badges for current language
-  const softList = (skillsData[lang] && skillsData[lang].softSkills) ? skillsData[lang].softSkills : (skillsData.softSkills || []);
+  const softList = currentSkills.softSkills || (skillsData[lang] && skillsData[lang].softSkills) || skillsData.softSkills || [];
   if (softSkillsContainer && softList) {
     softSkillsContainer.innerHTML = softList.map(soft => `
       <span class="soft-skill-badge">${soft}</span>
@@ -348,4 +355,77 @@ function initDocModal() {
       closeModal();
     }
   });
+}
+
+/* --- RENDERIZADO DE CURSOS Y CERTIFICACIONES --- */
+function renderCourses(lang) {
+  const coursesGrid = document.getElementById('courses-grid');
+  if (!coursesGrid || typeof coursesData === 'undefined') return;
+
+  const dataList = (lang === 'en' && coursesData.en) ? coursesData.en : (coursesData.es || coursesData);
+  const viewPdfLabel = lang === 'en' ? 'View Certificate (PDF)' : 'Ver Certificado (PDF)';
+  const serialLabel = lang === 'en' ? 'Serial No.:' : 'No. Serie:';
+
+  coursesGrid.innerHTML = dataList.map((course, index) => `
+    <div class="course-card glass-card reveal reveal-delay-${(index % 3) + 1}">
+      <div class="course-card-header">
+        <div class="course-icon-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+        </div>
+        <span class="course-date-badge">${course.date}</span>
+      </div>
+
+      <h3 class="course-title">${course.title}</h3>
+      <div class="course-issuer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>${course.issuer}</span>
+      </div>
+
+      <div class="course-meta">
+        <span class="course-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          ${course.duration}
+        </span>
+        <span class="course-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          <strong>${serialLabel}</strong> ${course.serialNumber}
+        </span>
+      </div>
+
+      <p class="course-desc">${course.description}</p>
+
+      ${course.points && course.points.length ? `
+        <ul class="course-bullets">
+          ${course.points.map(pt => `<li>${pt}</li>`).join('')}
+        </ul>
+      ` : ''}
+
+
+
+      <div class="course-footer">
+        <a href="${course.certificatePdf}" target="_blank" rel="noopener" class="btn-pdf">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>${viewPdfLabel}</span>
+        </a>
+      </div>
+    </div>
+  `).join('');
 }

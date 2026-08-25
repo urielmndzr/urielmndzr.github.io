@@ -10,6 +10,7 @@ const staticTranslations = {
     "nav.trajectory": "Trayectoria",
     "nav.projects": "Proyectos",
     "nav.skills": "Habilidades",
+    "nav.courses": "Cursos",
     "nav.contact": "Contacto",
 
     // Hero Section
@@ -39,6 +40,12 @@ const staticTranslations = {
     "skills.tools": "Herramientas & DevOps",
     "skills.soft": "Competencias Profesionales",
     "skills.languages": "Idiomas",
+
+    // Courses Section
+    "courses.title": 'Cursos y <span class="gradient-text">Certificaciones</span>',
+    "courses.subtitle": "Formación continua, certificaciones oficiales y aprendizajes clave adquiridos.",
+    "courses.view_pdf": "Ver Certificado (PDF)",
+    "courses.serial_label": "No. Serie:",
 
     // Contact Section
     "contact.title": 'Contacto <span class="gradient-text">Directo</span>',
@@ -74,6 +81,7 @@ const staticTranslations = {
     "nav.trajectory": "Experience",
     "nav.projects": "Projects",
     "nav.skills": "Skills",
+    "nav.courses": "Courses",
     "nav.contact": "Contact",
 
     // Hero Section
@@ -103,6 +111,12 @@ const staticTranslations = {
     "skills.tools": "Tools & DevOps",
     "skills.soft": "Professional Competencies",
     "skills.languages": "Spoken Languages",
+
+    // Courses Section
+    "courses.title": 'Courses and <span class="gradient-text">Certifications</span>',
+    "courses.subtitle": "Continuous learning, official certifications, and key skills acquired.",
+    "courses.view_pdf": "View Certificate (PDF)",
+    "courses.serial_label": "Serial No.:",
 
     // Contact Section
     "contact.title": 'Direct <span class="gradient-text">Contact</span>',
