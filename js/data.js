@@ -236,44 +236,44 @@ const projectsData = {
 };
 
 const skillsData = {
-  programming: [
-    "Java",
-    "Python",
-    "C",
-    "C++",
-    "SQL",
-    "XML"
-  ],
-  databasesAndErp: [
-    "Odoo ERP",
-    "SAP ERP",
-    "SAP HANA Studio",
-    "PostgreSQL",
-    "MongoDB",
-    "Bases de Datos Relacionales"
-  ],
-  biAndAnalytics: [
-    "Power BI",
-    "Business Intelligence",
-    "Modelado de Datos",
-    "Análisis de Datos",
-    "Visualización de Datos",
-    "ETL",
-    "Microsoft Excel"
-  ],
-  toolsAndDevops: [
-    "Git",
-    "Docker",
-    "APIs REST",
-    "Linux",
-    "Jira",
-    "UML",
-    "Visual Studio Code",
-    "IntelliJ IDEA",
-    "NetBeans",
-    "Redes de computadoras"
-  ],
   es: {
+    programming: [
+      "Java",
+      "Python",
+      "C",
+      "C++",
+      "SQL",
+      "XML"
+    ],
+    databasesAndErp: [
+      "Odoo ERP",
+      "SAP ERP",
+      "SAP HANA Studio",
+      "PostgreSQL",
+      "MongoDB",
+      "Bases de Datos Relacionales"
+    ],
+    biAndAnalytics: [
+      "Power BI",
+      "Business Intelligence",
+      "Modelado de Datos",
+      "Análisis de Datos",
+      "Visualización de Datos",
+      "ETL",
+      "Microsoft Excel"
+    ],
+    toolsAndDevops: [
+      "Git",
+      "Docker",
+      "APIs REST",
+      "Linux",
+      "Jira",
+      "UML",
+      "Visual Studio Code",
+      "IntelliJ IDEA",
+      "NetBeans",
+      "Redes de Computadoras"
+    ],
     softSkills: [
       "Adaptabilidad",
       "Proactividad",
@@ -286,6 +286,43 @@ const skillsData = {
     ]
   },
   en: {
+    programming: [
+      "Java",
+      "Python",
+      "C",
+      "C++",
+      "SQL",
+      "XML"
+    ],
+    databasesAndErp: [
+      "Odoo ERP",
+      "SAP ERP",
+      "SAP HANA Studio",
+      "PostgreSQL",
+      "MongoDB",
+      "Relational Databases"
+    ],
+    biAndAnalytics: [
+      "Power BI",
+      "Business Intelligence",
+      "Data Modeling",
+      "Data Analytics",
+      "Data Visualization",
+      "ETL",
+      "Microsoft Excel"
+    ],
+    toolsAndDevops: [
+      "Git",
+      "Docker",
+      "REST APIs",
+      "Linux",
+      "Jira",
+      "UML",
+      "Visual Studio Code",
+      "IntelliJ IDEA",
+      "NetBeans",
+      "Computer Networks"
+    ],
     softSkills: [
       "Adaptability",
       "Proactivity",
@@ -297,4 +334,152 @@ const skillsData = {
       "Leadership"
     ]
   }
+};
+
+/* --- INFORMACIÓN DE CURSOS Y CERTIFICACIONES --- */
+const coursesData = {
+  es: [
+    {
+      id: "data-science-intro",
+      title: "Introducción a la Ciencia de Datos",
+      issuer: "Santander Open Academy",
+      date: "13 de Septiembre de 2025",
+      duration: "6 Horas · 2 Módulos",
+      serialNumber: "OA-2025-0913001711171",
+      description: "Importancia de la ciencia de datos en los negocios, aplicaciones de Big Data y procesos de limpieza y calidad de datos.",
+      points: [
+        "Uso de la Ciencia de Datos y Big Data para generar ventajas competitivas y acelerar el éxito empresarial.",
+        "Estrategias de calidad y limpieza de datos, resolución de problemas y el rol humano en el procesamiento de información."
+      ],
+      certificatePdf: "assets/certificates/introduccion-ciencia-de-datos.pdf"
+    },
+    {
+      id: "power-bi",
+      title: "Fundamentos de Power BI",
+      issuer: "Santander Open Academy",
+      date: "14 de Septiembre de 2025",
+      duration: "8 Horas · 2 Módulos",
+      serialNumber: "OA-2025-0914001715504",
+      description: "Importación, análisis y visualización de datos en Power BI Desktop, optimizando su presentación en el editor Power Query.",
+      points: [
+        "Importación de datos, formateo de columnas y diseño de informes dinámicos y tableros interactivos.",
+        "Configuración de paneles de filtros, formatos condicionales y optimización de datos en Power Query."
+      ],
+      certificatePdf: "assets/certificates/power-bi.pdf"
+    },
+    {
+      id: "english-fundamentals",
+      title: "English Fundamentals: Successful Networking and Interviews",
+      issuer: "Santander Open Academy",
+      date: "2 de Noviembre de 2025",
+      duration: "8 Horas · 2 Módulos",
+      serialNumber: "OA-2025-1102001910114",
+      description: "Técnicas de comunicación ejecutiva en inglés: Small Talk, Elevator Pitch, entrevistas laborales (internas/externas) y reuniones.",
+      points: [
+        "Desarrollo de Elevator Pitch profesional, vocabulario técnico de habilidades y técnicas de Small Talk.",
+        "Preparación para entrevistas de trabajo (internas y externas), reuniones corporativas y oratoria efectiva."
+      ],
+      certificatePdf: "assets/certificates/english-fundamentals-networking.pdf"
+    },
+    {
+      id: "gemini-ai",
+      title: "Domina la IA con Gemini",
+      issuer: "Santander Open Academy",
+      date: "11 de Enero de 2026",
+      duration: "2 Horas · 2 Módulos",
+      serialNumber: "OA-2026-0111002148166",
+      description: "Uso de Gemini como asistente personal de Google para productividad, creación de contenido, investigación e IA responsable.",
+      points: [
+        "Uso de Gemini para optimizar la productividad diaria, investigación avanzada y aprendizaje asistido.",
+        "Diseño y creación de contenidos digitales aplicando principios éticos de Inteligencia Artificial Responsable."
+      ],
+      certificatePdf: "assets/certificates/domina-ia-gemini.pdf"
+    },
+    {
+      id: "responsible-prompting",
+      title: "Prompting Responsable: Maximiza la IA en tu Negocio",
+      issuer: "Santander Open Academy",
+      date: "11 de Enero de 2026",
+      duration: "8 Horas · 2 Módulos",
+      serialNumber: "OA-2026-0111002149883",
+      description: "Creación de prompts efectivos, integración de IA en la rutina diaria, automatización No-Code y uso responsable de la IA.",
+      points: [
+        "Diseño paso a paso de prompts efectivos para potenciar la creatividad e integrar la IA en flujos de trabajo diarios.",
+        "Desarrollo de automatizaciones y soluciones de software sin programar (No-Code) bajo principios éticos de IA responsable."
+      ],
+      certificatePdf: "assets/certificates/prompting-responsable-ia.pdf"
+    }
+  ],
+  en: [
+    {
+      id: "data-science-intro",
+      title: "Introduction to Data Science",
+      issuer: "Santander Open Academy",
+      date: "September 13, 2025",
+      duration: "6 Hours · 2 Modules",
+      serialNumber: "OA-2025-0913001711171",
+      description: "Essential role of data science in business, Big Data applications, and data quality/cleansing processes.",
+      points: [
+        "Leveraging Data Science and Big Data to drive competitive advantage and accelerate business success.",
+        "Data quality and cleansing strategies, problem resolution, and the human role in data processing."
+      ],
+      certificatePdf: "assets/certificates/introduccion-ciencia-de-datos.pdf"
+    },
+    {
+      id: "power-bi",
+      title: "Power BI Fundamentals",
+      issuer: "Santander Open Academy",
+      date: "September 14, 2025",
+      duration: "8 Hours · 2 Modules",
+      serialNumber: "OA-2025-0914001715504",
+      description: "Importing, analyzing, and visualizing data in Power BI Desktop, optimizing presentation in the Power Query editor.",
+      points: [
+        "Data import, column formatting, and interactive report and dashboard design.",
+        "Configuring filter panels, conditional formatting, and data optimization in Power Query."
+      ],
+      certificatePdf: "assets/certificates/power-bi.pdf"
+    },
+    {
+      id: "english-fundamentals",
+      title: "English Fundamentals: Successful Networking and Interviews",
+      issuer: "Santander Open Academy",
+      date: "November 2, 2025",
+      duration: "8 Hours · 2 Modules",
+      serialNumber: "OA-2025-1102001910114",
+      description: "Executive English communication skills: Small Talk, Elevator Pitch, job interviews (internal/external), and corporate meetings.",
+      points: [
+        "Developing professional Elevator Pitches, technical skills vocabulary, and executive Small Talk techniques.",
+        "Preparing for internal and external job interviews, corporate meetings, and effective speaking."
+      ],
+      certificatePdf: "assets/certificates/english-fundamentals-networking.pdf"
+    },
+    {
+      id: "gemini-ai",
+      title: "Mastering AI with Gemini",
+      issuer: "Santander Open Academy",
+      date: "January 11, 2026",
+      duration: "2 Hours · 2 Modules",
+      serialNumber: "OA-2026-0111002148166",
+      description: "Using Gemini as a Google personal assistant for productivity, content creation, research, and responsible AI.",
+      points: [
+        "Leveraging Gemini to streamline daily productivity workflows, research, and assisted learning.",
+        "AI-assisted content creation and digital design guided by Responsible AI principles."
+      ],
+      certificatePdf: "assets/certificates/domina-ia-gemini.pdf"
+    },
+    {
+      id: "responsible-prompting",
+      title: "Responsible Prompting: Maximize AI in Your Business",
+      issuer: "Santander Open Academy",
+      date: "January 11, 2026",
+      duration: "8 Hours · 2 Modules",
+      serialNumber: "OA-2026-0111002149883",
+      description: "Effective prompt creation, daily AI integration, No-Code automation, and ethical AI practice.",
+      points: [
+        "Step-by-step design of effective prompts to boost creativity and integrate AI into daily workflows.",
+        "Developing No-Code software solutions and automations guided by responsible and ethical AI principles."
+      ],
+      certificatePdf: "assets/certificates/prompting-responsable-ia.pdf"
+    }
+  ]
 };
