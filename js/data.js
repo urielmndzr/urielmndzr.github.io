@@ -340,46 +340,32 @@ const skillsData = {
 const coursesData = {
   es: [
     {
-      id: "data-science-intro",
-      title: "Introducción a la Ciencia de Datos",
+      id: "agile-project-management",
+      title: "Gestión de Proyectos y Fundamentos de Metodología Agile",
       issuer: "Santander Open Academy",
-      date: "13 de Septiembre de 2025",
-      duration: "6 Horas · 2 Módulos",
-      serialNumber: "OA-2025-0913001711171",
-      description: "Importancia de la ciencia de datos en los negocios, aplicaciones de Big Data y procesos de limpieza y calidad de datos.",
+      date: "28 de Agosto de 2026",
+      duration: "8 Horas · 2 Módulos",
+      serialNumber: "OA-2026-0828003123206",
+      description: "Fundamentos de gestión ágil de proyectos, marcos Kanban y Scrum, innovación con Design Thinking y validación ágil con Lean Startup.",
       points: [
-        "Uso de la Ciencia de Datos y Big Data para generar ventajas competitivas y acelerar el éxito empresarial.",
-        "Estrategias de calidad y limpieza de datos, resolución de problemas y el rol humano en el procesamiento de información."
+        "Principios y valores del Manifiesto Ágil, roles, eventos y artefactos en Scrum, y gestión visual del trabajo con Kanban (WIP, Lead/Cycle Time).",
+        "Integración holística: Design Thinking para empatizar e idear, Lean Startup para construir y validar el MVP, y Scrum para iterar y escalar el producto."
       ],
-      certificatePdf: "assets/certificates/introduccion-ciencia-de-datos.pdf"
+      certificatePdf: "assets/certificates/gestion-proyectos-agile.pdf"
     },
     {
-      id: "power-bi",
-      title: "Fundamentos de Power BI",
+      id: "responsible-prompting",
+      title: "Prompting Responsable: Maximiza la IA en tu Negocio",
       issuer: "Santander Open Academy",
-      date: "14 de Septiembre de 2025",
+      date: "11 de Enero de 2026",
       duration: "8 Horas · 2 Módulos",
-      serialNumber: "OA-2025-0914001715504",
-      description: "Importación, análisis y visualización de datos en Power BI Desktop, optimizando su presentación en el editor Power Query.",
+      serialNumber: "OA-2026-0111002149883",
+      description: "Creación de prompts efectivos, integración de IA en la rutina diaria, automatización No-Code y uso responsable de la IA.",
       points: [
-        "Importación de datos, formateo de columnas y diseño de informes dinámicos y tableros interactivos.",
-        "Configuración de paneles de filtros, formatos condicionales y optimización de datos en Power Query."
+        "Diseño paso a paso de prompts efectivos para potenciar la creatividad e integrar la IA en flujos de trabajo diarios.",
+        "Desarrollo de automatizaciones y soluciones de software sin programar (No-Code) bajo principios éticos de IA responsable."
       ],
-      certificatePdf: "assets/certificates/power-bi.pdf"
-    },
-    {
-      id: "english-fundamentals",
-      title: "English Fundamentals: Successful Networking and Interviews",
-      issuer: "Santander Open Academy",
-      date: "2 de Noviembre de 2025",
-      duration: "8 Horas · 2 Módulos",
-      serialNumber: "OA-2025-1102001910114",
-      description: "Técnicas de comunicación ejecutiva en inglés: Small Talk, Elevator Pitch, entrevistas laborales (internas/externas) y reuniones.",
-      points: [
-        "Desarrollo de Elevator Pitch profesional, vocabulario técnico de habilidades y técnicas de Small Talk.",
-        "Preparación para entrevistas de trabajo (internas y externas), reuniones corporativas y oratoria efectiva."
-      ],
-      certificatePdf: "assets/certificates/english-fundamentals-networking.pdf"
+      certificatePdf: "assets/certificates/prompting-responsable-ia.pdf"
     },
     {
       id: "gemini-ai",
@@ -396,62 +382,76 @@ const coursesData = {
       certificatePdf: "assets/certificates/domina-ia-gemini.pdf"
     },
     {
-      id: "responsible-prompting",
-      title: "Prompting Responsable: Maximiza la IA en tu Negocio",
+      id: "english-fundamentals",
+      title: "English Fundamentals: Successful Networking and Interviews",
       issuer: "Santander Open Academy",
-      date: "11 de Enero de 2026",
+      date: "2 de Noviembre de 2025",
       duration: "8 Horas · 2 Módulos",
-      serialNumber: "OA-2026-0111002149883",
-      description: "Creación de prompts efectivos, integración de IA en la rutina diaria, automatización No-Code y uso responsable de la IA.",
+      serialNumber: "OA-2025-1102001910114",
+      description: "Técnicas de comunicación ejecutiva en inglés: Small Talk, Elevator Pitch, entrevistas laborales (internas/externas) y reuniones.",
       points: [
-        "Diseño paso a paso de prompts efectivos para potenciar la creatividad e integrar la IA en flujos de trabajo diarios.",
-        "Desarrollo de automatizaciones y soluciones de software sin programar (No-Code) bajo principios éticos de IA responsable."
+        "Desarrollo de Elevator Pitch profesional, vocabulario técnico de habilidades y técnicas de Small Talk.",
+        "Preparación para entrevistas de trabajo (internas y externas), reuniones corporativas y oratoria efectiva."
       ],
-      certificatePdf: "assets/certificates/prompting-responsable-ia.pdf"
-    }
-  ],
-  en: [
-    {
-      id: "data-science-intro",
-      title: "Introduction to Data Science",
-      issuer: "Santander Open Academy",
-      date: "September 13, 2025",
-      duration: "6 Hours · 2 Modules",
-      serialNumber: "OA-2025-0913001711171",
-      description: "Essential role of data science in business, Big Data applications, and data quality/cleansing processes.",
-      points: [
-        "Leveraging Data Science and Big Data to drive competitive advantage and accelerate business success.",
-        "Data quality and cleansing strategies, problem resolution, and the human role in data processing."
-      ],
-      certificatePdf: "assets/certificates/introduccion-ciencia-de-datos.pdf"
+      certificatePdf: "assets/certificates/english-fundamentals-networking.pdf"
     },
     {
       id: "power-bi",
-      title: "Power BI Fundamentals",
+      title: "Fundamentos de Power BI",
       issuer: "Santander Open Academy",
-      date: "September 14, 2025",
-      duration: "8 Hours · 2 Modules",
+      date: "14 de Septiembre de 2025",
+      duration: "8 Horas · 2 Módulos",
       serialNumber: "OA-2025-0914001715504",
-      description: "Importing, analyzing, and visualizing data in Power BI Desktop, optimizing presentation in the Power Query editor.",
+      description: "Importación, análisis y visualización de datos en Power BI Desktop, optimizando su presentación en el editor Power Query.",
       points: [
-        "Data import, column formatting, and interactive report and dashboard design.",
-        "Configuring filter panels, conditional formatting, and data optimization in Power Query."
+        "Importación de datos, formateo de columnas y diseño de informes dinámicos y tableros interactivos.",
+        "Configuración de paneles de filtros, formatos condicionales y optimización de datos en Power Query."
       ],
       certificatePdf: "assets/certificates/power-bi.pdf"
     },
     {
-      id: "english-fundamentals",
-      title: "English Fundamentals: Successful Networking and Interviews",
+      id: "data-science-intro",
+      title: "Introducción a la Ciencia de Datos",
       issuer: "Santander Open Academy",
-      date: "November 2, 2025",
-      duration: "8 Hours · 2 Modules",
-      serialNumber: "OA-2025-1102001910114",
-      description: "Executive English communication skills: Small Talk, Elevator Pitch, job interviews (internal/external), and corporate meetings.",
+      date: "13 de Septiembre de 2025",
+      duration: "6 Horas · 2 Módulos",
+      serialNumber: "OA-2025-0913001711171",
+      description: "Importancia de la ciencia de datos en los negocios, aplicaciones de Big Data y procesos de limpieza y calidad de datos.",
       points: [
-        "Developing professional Elevator Pitches, technical skills vocabulary, and executive Small Talk techniques.",
-        "Preparing for internal and external job interviews, corporate meetings, and effective speaking."
+        "Uso de la Ciencia de Datos y Big Data para generar ventajas competitivas y acelerar el éxito empresarial.",
+        "Estrategias de calidad y limpieza de datos, resolución de problemas y el rol humano en el procesamiento de información."
       ],
-      certificatePdf: "assets/certificates/english-fundamentals-networking.pdf"
+      certificatePdf: "assets/certificates/introduccion-ciencia-de-datos.pdf"
+    }
+  ],
+  en: [
+    {
+      id: "agile-project-management",
+      title: "Project Management and Agile Fundamentals",
+      issuer: "Santander Open Academy",
+      date: "August 28, 2026",
+      duration: "8 Hours · 2 Modules",
+      serialNumber: "OA-2026-0828003123206",
+      description: "Agile project management fundamentals, Scrum & Kanban frameworks, innovation with Design Thinking, and agile validation with Lean Startup.",
+      points: [
+        "Agile Manifesto values and principles, Scrum roles, events, and artifacts, and visual workflow management using Kanban (WIP, Lead/Cycle Time).",
+        "Integrating Design Thinking for user empathy, Lean Startup for MVP validation, and Scrum for iterative scaling and product delivery."
+      ],
+      certificatePdf: "assets/certificates/gestion-proyectos-agile.pdf"
+    },
+    {
+      id: "responsible-prompting",
+      title: "Responsible Prompting: Maximize AI in Your Business",
+      issuer: "Santander Open Academy",
+      date: "January 11, 2026",
+      duration: "8 Hours · 2 Modules",
+      serialNumber: "OA-2026-0111002149883",
+      description: "Effective prompt creation, daily AI integration, No-Code automation, and ethical AI practice.",
+      points: [
+        "Step-by-step design of effective prompts to boost creativity and integrate AI into daily workflows.",
+        "Developing No-Code software solutions and automations guided by responsible and ethical AI principles."
+      ],
+      certificatePdf: "assets/certificates/prompting-responsable-ia.pdf"
     },
     {
       id: "gemini-ai",
@@ -468,18 +468,46 @@ const coursesData = {
       certificatePdf: "assets/certificates/domina-ia-gemini.pdf"
     },
     {
-      id: "responsible-prompting",
-      title: "Responsible Prompting: Maximize AI in Your Business",
+      id: "english-fundamentals",
+      title: "English Fundamentals: Successful Networking and Interviews",
       issuer: "Santander Open Academy",
-      date: "January 11, 2026",
+      date: "November 2, 2025",
       duration: "8 Hours · 2 Modules",
-      serialNumber: "OA-2026-0111002149883",
-      description: "Effective prompt creation, daily AI integration, No-Code automation, and ethical AI practice.",
+      serialNumber: "OA-2025-1102001910114",
+      description: "Executive English communication skills: Small Talk, Elevator Pitch, job interviews (internal/external), and corporate meetings.",
       points: [
-        "Step-by-step design of effective prompts to boost creativity and integrate AI into daily workflows.",
-        "Developing No-Code software solutions and automations guided by responsible and ethical AI principles."
+        "Developing professional Elevator Pitches, technical skills vocabulary, and executive Small Talk techniques.",
+        "Preparing for internal and external job interviews, corporate meetings, and effective speaking."
       ],
-      certificatePdf: "assets/certificates/prompting-responsable-ia.pdf"
+      certificatePdf: "assets/certificates/english-fundamentals-networking.pdf"
+    },
+    {
+      id: "power-bi",
+      title: "Power BI Fundamentals",
+      issuer: "Santander Open Academy",
+      date: "September 14, 2025",
+      duration: "8 Hours · 2 Modules",
+      serialNumber: "OA-2025-0914001715504",
+      description: "Importing, analyzing, and visualizing data in Power BI Desktop, optimizing presentation in the Power Query editor.",
+      points: [
+        "Data import, column formatting, and interactive report and dashboard design.",
+        "Configuring filter panels, conditional formatting, and data optimization in Power Query."
+      ],
+      certificatePdf: "assets/certificates/power-bi.pdf"
+    },
+    {
+      id: "data-science-intro",
+      title: "Introduction to Data Science",
+      issuer: "Santander Open Academy",
+      date: "September 13, 2025",
+      duration: "6 Hours · 2 Modules",
+      serialNumber: "OA-2025-0913001711171",
+      description: "Essential role of data science in business, Big Data applications, and data quality/cleansing processes.",
+      points: [
+        "Leveraging Data Science and Big Data to drive competitive advantage and accelerate business success.",
+        "Analysis of enterprise applications and methodologies for ensuring data quality."
+      ],
+      certificatePdf: "assets/certificates/introduccion-ciencia-de-datos.pdf"
     }
   ]
 };
